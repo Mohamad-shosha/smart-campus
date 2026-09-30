@@ -5,10 +5,12 @@ Ultra-Responsive Mobile & Desktop Design System
 """
 
 import os
+import re
 from parts_01_to_04 import get_sections_01_to_04
 from parts_05_to_08 import get_sections_05_to_08
 from parts_09_to_12 import get_sections_09_to_12
 from parts_13_to_15 import get_sections_13_to_15
+from specs_data import render_uiux_breakdown_html
 
 def assemble_master_showcase():
     css_and_head = """<!DOCTYPE html>
@@ -1040,6 +1042,200 @@ def assemble_master_showcase():
         grid-template-columns: 1fr !important;
       }
     }
+
+    /* ==========================================================================
+       FIGMA UI/UX DETAILED ENGINEERING BREAKDOWN CARDS
+       ========================================================================== */
+    .figma-uiux-breakdown {
+      background: #141c1a;
+      border: 1.5px solid #116e6366;
+      border-radius: 12px;
+      margin-top: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+      position: relative;
+    }
+
+    .breakdown-header {
+      background: linear-gradient(90deg, #0d2521 0%, #164039 50%, #0d2521 100%);
+      border-bottom: 1px solid #116e6366;
+      padding: 10px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .breakdown-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .breakdown-badge {
+      background: rgba(215, 162, 55, 0.15);
+      border: 1px solid #d7a237;
+      color: #ffd166;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .breakdown-title {
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-size: 13.5px;
+      font-weight: 800;
+      margin: 0;
+    }
+
+    .breakdown-chips {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .breakdown-chip {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #94a3b8;
+      font-size: 10px;
+      font-family: var(--font-mono);
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    .breakdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      background: #0d1514;
+    }
+
+    .breakdown-col {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 8px;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .breakdown-col-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--fbsu-gold);
+      font-size: 11px;
+      font-weight: 800;
+      font-family: var(--font-heading);
+      margin-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding-bottom: 4px;
+    }
+
+    .breakdown-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10.5px;
+      padding: 3px 0;
+      gap: 6px;
+      border-bottom: 1px dotted rgba(255, 255, 255, 0.04);
+    }
+    .breakdown-item:last-child {
+      border-bottom: none;
+    }
+
+    .breakdown-item-key {
+      color: #94a3b8;
+      font-family: var(--font-body);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .breakdown-item-val {
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 9.5px;
+      text-align: left;
+      direction: ltr;
+    }
+
+    .breakdown-ux-box {
+      padding: 14px 18px;
+      background: linear-gradient(180deg, #112521 0%, #0c1a17 100%);
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      border-top: 1px solid #116e6333;
+    }
+
+    .breakdown-ux-icon {
+      background: rgba(17, 110, 99, 0.35);
+      border: 1px solid #116e63;
+      color: #38c2b0;
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .breakdown-ux-content h4 {
+      font-family: var(--font-heading);
+      color: #ffd166;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 5px;
+    }
+
+    .breakdown-ux-content p {
+      color: #cbd5e1;
+      font-size: 11.5px;
+      line-height: 1.65;
+      font-family: var(--font-body);
+    }
+
+    @media (max-width: 1024px) {
+      .breakdown-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .breakdown-grid {
+        grid-template-columns: 1fr !important;
+        gap: 8px !important;
+        padding: 10px 12px !important;
+      }
+      .breakdown-header {
+        padding: 8px 12px !important;
+      }
+      .breakdown-ux-box {
+        flex-direction: column !important;
+        padding: 12px !important;
+      }
+    }
   </style>
 </head>
 <body class="inspect-mode">
@@ -1183,16 +1379,38 @@ def assemble_master_showcase():
 </html>
 """
 
-    full_html = [
-        css_and_head,
+    sections_html = "\n".join([
         get_sections_01_to_04(),
         get_sections_05_to_08(),
         get_sections_09_to_12(),
-        get_sections_13_to_15(),
-        footer_and_js
-    ]
+        get_sections_13_to_15()
+    ])
 
-    combined = "\n".join(full_html)
+    # Inject UI/UX Detailed Engineering Breakdown Cards for all 15 sections
+    id_to_num = {
+        'f-header': 1,
+        'f-hero': 2,
+        'f-grid': 3,
+        'f-sensor': 4,
+        'f-simulator': 5,
+        'f-gate': 6,
+        'f-booking': 7,
+        'f-share': 8,
+        'f-wallet': 9,
+        'f-analytics': 10,
+        'f-auth': 11,
+        'f-footer': 12,
+        'f-devices': 13,
+        'f-tokens': 14,
+        'f-architecture': 15
+    }
+
+    for sec_id, num in id_to_num.items():
+        card_html = render_uiux_breakdown_html(num)
+        pattern = rf'(<section id="{sec_id}".*?)(</section>)'
+        sections_html = re.sub(pattern, rf'\1{card_html}\n    \2', sections_html, count=1, flags=re.DOTALL)
+
+    combined = "\n".join([css_and_head, sections_html, footer_and_js])
     
     # Write to root index.html
     script_dir = os.path.dirname(os.path.abspath(__file__))
