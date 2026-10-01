@@ -72,7 +72,7 @@ def build_full_html():
                 <div style="width:110px; height:150px; margin:10px auto;">
                   <svg viewBox="0 0 100 160" width="100%" height="100%"><rect x="18" y="10" width="64" height="135" rx="24" fill="#0b6d87" stroke="#ffffff" stroke-width="2"/><ellipse cx="50" cy="50" rx="20" ry="12" fill="#072023"/></svg>
                 </div>
-                <div style="font-weight:800; font-size:16px; color:#fff;">سيارة راكان البلوي (سوناتا)</div>
+                <div style="font-weight:800; font-size:16px; color:#fff;">سيارة راكان المطيري (سوناتا)</div>
                 <div style="font-size:12px; color:#94a3b8; margin-top:4px;">اللوحة: د ل س 8892 | الكلاس: 10:15 ص</div>
                 <div style="display:flex; justify-content:center; gap:16px; margin-top:16px; font-size:12px;">
                   <span style="background:rgba(16,185,129,0.15); color:#10b981; padding:4px 10px; border-radius:6px; font-weight:700;">+100% استغلال السعة</span>
@@ -94,7 +94,7 @@ def build_full_html():
                     <div style="font-size:11px; color:var(--fbsu-gold); margin-top:2px;">يكسب: 17.25 ر.س بالمحفظة</div>
                   </div>
                   <div style="background:#0a1614; border:1px solid var(--fbsu-teal); border-radius:8px; padding:12px;">
-                    <div style="font-weight:700; font-size:13px; color:#fff;">راكان البلوي (حاسب)</div>
+                    <div style="font-weight:700; font-size:13px; color:#fff;">راكان المطيري (حاسب)</div>
                     <div style="font-size:11px; color:#888;">الحالة: تم توجيهه لموقف #01</div>
                     <div style="font-size:11px; color:#10b981; margin-top:2px;">وقت البحث: 0 ثانية</div>
                   </div>
@@ -153,7 +153,7 @@ def build_full_html():
                 <div style="width:110px; height:150px; margin:10px auto;">
                   <svg viewBox="0 0 100 160" width="100%" height="100%"><rect x="18" y="10" width="64" height="135" rx="24" fill="#0b6d87" stroke="#ffffff" stroke-width="2"/><ellipse cx="50" cy="50" rx="20" ry="12" fill="#072023"/></svg>
                 </div>
-                <div style="font-weight:800; font-size:16px; color:#0f172a;">سيارة راكان البلوي (سوناتا)</div>
+                <div style="font-weight:800; font-size:16px; color:#0f172a;">سيارة راكان المطيري (سوناتا)</div>
                 <div style="font-size:12px; color:#64748b; margin-top:4px;">اللوحة: د ل س 8892 | الكلاس: 10:15 ص</div>
                 <div style="display:flex; justify-content:center; gap:16px; margin-top:16px; font-size:12px;">
                   <span style="background:rgba(16,185,129,0.12); color:#059669; padding:4px 10px; border-radius:6px; font-weight:800;">+100% استغلال السعة</span>
@@ -175,7 +175,7 @@ def build_full_html():
                     <div style="font-size:11px; color:#b45309; font-weight:700; margin-top:2px;">يكسب: 17.25 ر.س بالمحفظة</div>
                   </div>
                   <div style="background:#f8fafc; border:1.5px solid var(--fbsu-teal); border-radius:8px; padding:12px;">
-                    <div style="font-weight:700; font-size:13px; color:#0f172a;">راكان البلوي (حاسب)</div>
+                    <div style="font-weight:700; font-size:13px; color:#0f172a;">راكان المطيري (حاسب)</div>
                     <div style="font-size:11px; color:#64748b;">الحالة: تم توجيهه لموقف #01</div>
                     <div style="font-size:11px; color:#059669; font-weight:700; margin-top:2px;">وقت البحث: 0 ثانية</div>
                   </div>
@@ -273,7 +273,7 @@ def build_full_html():
                     </div>
                     <div style="background:#0f2420; border:1px solid var(--fbsu-gold); border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
                       <div>
-                        <div style="font-weight:700; font-size:12.5px; color:#fff;">سيارة راكان البلوي (سوناتا)</div>
+                        <div style="font-weight:700; font-size:12.5px; color:#fff;">سيارة راكان المطيري (سوناتا)</div>
                         <div style="font-size:11px; color:var(--fbsu-gold);">لوحة: د ل س 8892 - حجز تبادل ذكي</div>
                       </div>
                       <span class="status-pill pill-flex">تبادل نشط</span>
@@ -347,7 +347,7 @@ def build_full_html():
                     </div>
                     <div style="background:#ffffff; border:1.5px solid rgba(215,162,55,0.6); border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.03);">
                       <div>
-                        <div style="font-weight:700; font-size:12.5px; color:#0f172a;">سيارة راكان البلوي (سوناتا)</div>
+                        <div style="font-weight:700; font-size:12.5px; color:#0f172a;">سيارة راكان المطيري (سوناتا)</div>
                         <div style="font-size:11px; color:#b45309; font-weight:700;">لوحة: د ل س 8892 - حجز تبادل ذكي</div>
                       </div>
                       <span class="status-pill pill-flex">تبادل نشط</span>

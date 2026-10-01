@@ -145,8 +145,8 @@ const USERS = {
   },
   rakan: {
     id: '20220088',
-    name: 'راكان البلوي',
-    nameEn: 'Rakan Al-Balawi',
+    name: 'راكان المطيري',
+    nameEn: 'Rakan Al-Mutairi',
     role: 'طالب - كلية الحاسب الآلي',
     roleEn: 'Student - College of Computing',
     car: 'هيونداي سوناتا 2024',
@@ -339,7 +339,7 @@ const SIMULATOR_STAGES = [
     time: '08:00 AM',
     title: 'الصباح: إياد يركن في موقفه #01',
     titleEn: 'Morning: Eyad parks in Spot #01',
-    desc: 'وصل الطالب إياد الحربي لحضور محاضرته الأولى في كلية الهندسة (08:00 - 10:00 ص) وركن سيارته كامري في موقفه المخصص #01. زميله راكان البلوي لا يزال في منزله ومحاضرته تبدأ الساعة 10:15 ص وفق جدول (أحد/ثلاثاء).',
+    desc: 'وصل الطالب إياد الحربي لحضور محاضرته الأولى في كلية الهندسة (08:00 - 10:00 ص) وركن سيارته كامري في موقفه المخصص #01. زميله راكان المطيري لا يزال في منزله ومحاضرته تبدأ الساعة 10:15 ص وفق جدول (أحد/ثلاثاء).',
     descEn: 'Student Eyad arrived for his first lecture at College of Engineering (08:00 - 10:00 AM) and parked in Spot #01. Student Rakan is at home as his lecture starts at 10:15 AM (Sun/Tue schedule).',
     spot1Status: 'occupied',
     spot1Occupant: 'إياد الحربي',
@@ -390,7 +390,7 @@ const SIMULATOR_STAGES = [
     desc: 'وصل راكان إلى بوابة الجامعة الرئيسية. كاميرا الذكاء الاصطناعي قرأت لوحته (د ل س 8892)، تحققت من الحجز الذكي، ورفعت ذراع البوابة تلقائياً مع شاشة إرشادية: "أهلاً راكان - توجه للموقف #01". ركن راكان في ثوانٍ دون البحث أو الدوران في المواقف!',
     descEn: 'Rakan arrived at the main gate. The AI camera scanned his plate (D L S 8892), validated his flex pass, and lifted the barrier automatically. Rakan parked in seconds without searching!',
     spot1Status: 'occupied',
-    spot1Occupant: 'راكان البلوي',
+    spot1Occupant: 'راكان المطيري',
     spot1Badge: 'مشغول - راكان',
     spot1Plate: 'د ل س 8892',
     eyadStatus: 'بريك خارجي مستمر',
@@ -981,7 +981,7 @@ function renderSimulatorTab(isAr) {
                 ${createIcon('user', { size: 20, color: '#ffffff' })}
               </div>
               <div class="participant-info">
-                <h4>راكان البلوي (حاسب)</h4>
+                <h4>راكان المطيري (حاسب)</h4>
                 <p>الحالة: <strong>${stage.rakanStatus}</strong></p>
                 <p style="color:var(--fbsu-primary);">كلاسه: 10:15 ص</p>
               </div>
@@ -1087,7 +1087,7 @@ function renderGateScannerTab(isAr) {
                 <span>لوحة: <strong>ب ط ك 1234</strong> - موقف #01 (كلية الهندسة)</span>
               </button>
               <button class="pattern-option ${appState.gateScannedPlate === 'د ل س 8892' ? 'selected' : ''}" data-plate="د ل س 8892" style="text-align:right;">
-                <h5>سيارة الطالب راكان البلوي (سوناتا)</h5>
+                <h5>سيارة الطالب راكان المطيري (سوناتا)</h5>
                 <span>لوحة: <strong>د ل س 8892</strong> - حجز تبادل ذكي في بريك إياد</span>
               </button>
               <button class="pattern-option ${appState.gateScannedPlate === 'أ ح م 5501' ? 'selected' : ''}" data-plate="أ ح م 5501" style="text-align:right;">

@@ -244,7 +244,7 @@ def get_30_grid_html(mode="dark"):
     # Define 30 spots with names and statuses
     spots_data = [
         {"id": 1, "type": "flex", "title": "موقف #01", "badge": "تبادل ذكي", "driver": "بريك إياد (3.5 س)", "icon": "flex"},
-        {"id": 2, "type": "occ", "title": "موقف #02", "badge": "مشغول", "driver": "راكان البلوي", "car_color": "#0b6d87"},
+        {"id": 2, "type": "occ", "title": "موقف #02", "badge": "مشغول", "driver": "راكان المطيري", "car_color": "#0b6d87"},
         {"id": 3, "type": "avail", "title": "موقف #03", "badge": "متاح", "driver": "احجز الآن"},
         {"id": 4, "type": "avail", "title": "موقف #04", "badge": "متاح", "driver": "احجز الآن"},
         {"id": 5, "type": "occ", "title": "موقف #05", "badge": "مشغول", "driver": "سعد القحطاني", "car_color": "#116E63"},
