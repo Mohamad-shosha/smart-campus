@@ -811,6 +811,74 @@ const SIMULATOR_STAGES = [
 ];
 
 // ============================================================================
+// Category Sub-Navigation Helper (1-Click Peer Switcher)
+// ============================================================================
+function renderCategorySubnav(isAr) {
+  const isParkingCategory = ['map', 'booking', 'simulator', 'gate', 'share'].includes(appState.activeTab);
+  const isCampusCategory = ['tutoring', 'office-hours', 'rooms'].includes(appState.activeTab);
+
+  if (isParkingCategory) {
+    return `
+      <div class="category-subnav-container">
+        <div class="category-subnav-pills">
+          <div class="subnav-category-badge">
+            ${createIcon('car', { size: 14, color: 'var(--fbsu-teal)' })}
+            <span>${isAr ? 'منظومة المواقف الذكية' : 'Smart Parking Suite'}</span>
+          </div>
+          <button class="subnav-chip-btn ${appState.activeTab === 'map' ? 'active' : ''}" data-tab="map">
+            ${createIcon('mapPin', { size: 13 })}
+            <span>${isAr ? 'خريطة المواقف الحية' : 'Live Map'}</span>
+          </button>
+          <button class="subnav-chip-btn ${appState.activeTab === 'booking' ? 'active' : ''}" data-tab="booking">
+            ${createIcon('calendar', { size: 13 })}
+            <span>${isAr ? 'حجز موقف وتصريح' : 'Book Spot'}</span>
+          </button>
+          <button class="subnav-chip-btn ${appState.activeTab === 'simulator' ? 'active' : ''}" data-tab="simulator">
+            ${createIcon('zap', { size: 13 })}
+            <span>${isAr ? 'محاكاة التبادل Flex-Share' : 'Flex Swap Demo'}</span>
+          </button>
+          <button class="subnav-chip-btn ${appState.activeTab === 'gate' ? 'active' : ''}" data-tab="gate">
+            ${createIcon('camera', { size: 13 })}
+            <span>${isAr ? 'بوابة وكاميرات ALPR' : 'Gate ALPR'}</span>
+          </button>
+          <button class="subnav-chip-btn ${appState.activeTab === 'share' ? 'active' : ''}" data-tab="share">
+            ${createIcon('refreshCw', { size: 13 })}
+            <span>${isAr ? 'شارك موقفك واربح' : 'Share & Earn'}</span>
+          </button>
+        </div>
+      </div>
+    `;
+  }
+
+  if (isCampusCategory) {
+    return `
+      <div class="category-subnav-container">
+        <div class="category-subnav-pills">
+          <div class="subnav-category-badge" style="border-color:var(--fbsu-gold-border); background:rgba(215,162,55,0.12);">
+            ${createIcon('bookOpen', { size: 14, color: 'var(--fbsu-gold)' })}
+            <span style="color:var(--fbsu-gold);">${isAr ? 'الحرم الجامعي والأنشطة الطلابية' : 'Smart Campus Hub'}</span>
+          </div>
+          <button class="subnav-chip-btn ${appState.activeTab === 'tutoring' ? 'active' : ''}" data-tab="tutoring">
+            ${createIcon('users', { size: 13 })}
+            <span>${isAr ? 'النشاط الطلابي والتدريس (70 ر.س)' : 'Peer Tutoring (70 SAR)'}</span>
+          </button>
+          <button class="subnav-chip-btn ${appState.activeTab === 'office-hours' ? 'active' : ''}" data-tab="office-hours">
+            ${createIcon('userCheck', { size: 13 })}
+            <span>${isAr ? 'الساعات المكتبية للعمداء والرؤساء' : 'Faculty Office Hours'}</span>
+          </button>
+          <button class="subnav-chip-btn ${appState.activeTab === 'rooms' ? 'active' : ''}" data-tab="rooms">
+            ${createIcon('doorClosed', { size: 13 })}
+            <span>${isAr ? 'حجز القاعات ومعامل الحاسوب' : 'Labs & Study Pods'}</span>
+          </button>
+        </div>
+      </div>
+    `;
+  }
+
+  return '';
+}
+
+// ============================================================================
 // Main Application Renderer
 // ============================================================================
 function renderApp() {
@@ -865,41 +933,89 @@ function renderApp() {
             <h1 class="brand-uni-name">${isAr ? 'جامعة فهد بن سلطان' : 'Fahad Bin Sultan University'}</h1>
           </div>
 
-          <!-- Navigation Menu (Right side in Arabic RTL) -->
+          <!-- Grouped Responsive Navigation Menu -->
           <nav class="nav-menu">
-            <button class="nav-item ${appState.activeTab === 'map' ? 'active' : ''}" data-tab="map">
-              ${createIcon('mapPin', { size: 14 })}
-              <span>${isAr ? 'خريطة المواقف' : 'Live Map'}</span>
-            </button>
-            <button class="nav-item ${appState.activeTab === 'tutoring' ? 'active' : ''}" data-tab="tutoring">
-              ${createIcon('bookOpen', { size: 14 })}
-              <span>${isAr ? 'الأنشطة والشروحات' : 'Peer Tutoring'}</span>
-            </button>
-            <button class="nav-item ${appState.activeTab === 'office-hours' ? 'active' : ''}" data-tab="office-hours">
-              ${createIcon('userCheck', { size: 14 })}
-              <span>${isAr ? 'الساعات المكتبية' : 'Office Hours'}</span>
-            </button>
-            <button class="nav-item ${appState.activeTab === 'rooms' ? 'active' : ''}" data-tab="rooms">
-              ${createIcon('doorClosed', { size: 14 })}
-              <span>${isAr ? 'القاعات والمعامل' : 'Labs & Rooms'}</span>
-            </button>
-            <button class="nav-item ${appState.activeTab === 'simulator' ? 'active' : ''}" data-tab="simulator">
-              ${createIcon('zap', { size: 14 })}
-              <span>${isAr ? 'محاكاة التبادل' : 'Flex Swap Demo'}</span>
-            </button>
-            <button class="nav-item ${appState.activeTab === 'gate' ? 'active' : ''}" data-tab="gate">
-              ${createIcon('camera', { size: 14 })}
-              <span>${isAr ? 'كاميرات ALPR' : 'Gate ALPR'}</span>
-            </button>
-            <button class="nav-item ${appState.activeTab === 'booking' ? 'active' : ''}" data-tab="booking">
-              ${createIcon('calendar', { size: 14 })}
-              <span>${isAr ? 'حجز موقف' : 'Book Parking'}</span>
-            </button>
-            <button class="nav-item ${appState.activeTab === 'share' ? 'active' : ''}" data-tab="share">
-              ${createIcon('refreshCw', { size: 14 })}
-              <span>${isAr ? 'شارك واربح' : 'Share & Earn'}</span>
-            </button>
-            <button class="nav-item ${appState.activeTab === 'analytics' ? 'active' : ''}" data-tab="analytics">
+            <!-- Group 1: Smart Parking Services Dropdown -->
+            <div class="nav-dropdown-group" id="parking-dropdown-group">
+              <button class="nav-item nav-dropdown-trigger ${['map', 'booking', 'simulator', 'gate', 'share'].includes(appState.activeTab) ? 'active' : ''}" id="parking-menu-btn" title="${isAr ? 'خدمات المواقف الذكية' : 'Smart Parking Suite'}">
+                ${createIcon('car', { size: 14 })}
+                <span>${isAr ? 'المواقف الذكية' : 'Smart Parking'}</span>
+                ${createIcon('chevronDown', { size: 12, className: 'dropdown-arrow' })}
+              </button>
+              <div class="nav-dropdown-menu">
+                <button class="dropdown-item ${appState.activeTab === 'map' ? 'active' : ''}" data-tab="map">
+                  ${createIcon('mapPin', { size: 14 })}
+                  <div class="dropdown-item-info">
+                    <span class="dropdown-item-title">${isAr ? 'خريطة المواقف الحية' : 'Live Map'}</span>
+                    <span class="dropdown-item-desc">${isAr ? '30 موقفاً وحساسات إنترنت الأشياء' : '30 Bays & IoT'}</span>
+                  </div>
+                </button>
+                <button class="dropdown-item ${appState.activeTab === 'booking' ? 'active' : ''}" data-tab="booking">
+                  ${createIcon('calendar', { size: 14 })}
+                  <div class="dropdown-item-info">
+                    <span class="dropdown-item-title">${isAr ? 'حجز موقف وتصريح ذكي' : 'Book Parking'}</span>
+                    <span class="dropdown-item-desc">${isAr ? 'تصريح رقمي FBSU Pass فوري' : 'Digital QR & NFC'}</span>
+                  </div>
+                </button>
+                <button class="dropdown-item ${appState.activeTab === 'simulator' ? 'active' : ''}" data-tab="simulator">
+                  ${createIcon('zap', { size: 14 })}
+                  <div class="dropdown-item-info">
+                    <span class="dropdown-item-title">${isAr ? 'محاكاة التبادل Flex-Share' : 'Flex Swap Demo'}</span>
+                    <span class="dropdown-item-desc">${isAr ? 'سيناريو بريك إياد وراكان' : 'Break Swap'}</span>
+                  </div>
+                </button>
+                <button class="dropdown-item ${appState.activeTab === 'gate' ? 'active' : ''}" data-tab="gate">
+                  ${createIcon('camera', { size: 14 })}
+                  <div class="dropdown-item-info">
+                    <span class="dropdown-item-title">${isAr ? 'كاميرات وقارئ اللوحات ALPR' : 'Gate ALPR'}</span>
+                    <span class="dropdown-item-desc">${isAr ? 'رؤية حاسوبية وبوابة آلية' : 'Optical Plate Reader'}</span>
+                  </div>
+                </button>
+                <button class="dropdown-item ${appState.activeTab === 'share' ? 'active' : ''}" data-tab="share">
+                  ${createIcon('refreshCw', { size: 14 })}
+                  <div class="dropdown-item-info">
+                    <span class="dropdown-item-title">${isAr ? 'شارك موقفك واربح' : 'Share & Earn'}</span>
+                    <span class="dropdown-item-desc">${isAr ? 'كاش باك 17.25 ر.س بالمحفظة' : '17.25 SAR per break'}</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Group 2: Smart Campus & Student Hub Dropdown -->
+            <div class="nav-dropdown-group" id="campus-dropdown-group">
+              <button class="nav-item nav-dropdown-trigger ${['tutoring', 'office-hours', 'rooms'].includes(appState.activeTab) ? 'active' : ''}" id="campus-menu-btn" title="${isAr ? 'الحرم الجامعي والأنشطة الأكاديمية' : 'Campus Hub'}">
+                ${createIcon('bookOpen', { size: 14 })}
+                <span>${isAr ? 'الحرم والأنشطة' : 'Campus Hub'}</span>
+                <span class="nav-highlight-dot"></span>
+                ${createIcon('chevronDown', { size: 12, className: 'dropdown-arrow' })}
+              </button>
+              <div class="nav-dropdown-menu">
+                <button class="dropdown-item ${appState.activeTab === 'tutoring' ? 'active' : ''}" data-tab="tutoring">
+                  ${createIcon('users', { size: 14 })}
+                  <div class="dropdown-item-info">
+                    <span class="dropdown-item-title">${isAr ? 'النشاط الطلابي والتدريس (70 ر.س)' : 'Peer Tutoring (70 SAR)'}</span>
+                    <span class="dropdown-item-desc">${isAr ? 'حصص تقوية وسداد الرسوم الجامعية' : 'Lectures & tuition fee offset'}</span>
+                  </div>
+                </button>
+                <button class="dropdown-item ${appState.activeTab === 'office-hours' ? 'active' : ''}" data-tab="office-hours">
+                  ${createIcon('userCheck', { size: 14 })}
+                  <div class="dropdown-item-info">
+                    <span class="dropdown-item-title">${isAr ? 'الساعات المكتبية للعمداء والرؤساء' : 'Faculty Office Hours'}</span>
+                    <span class="dropdown-item-desc">${isAr ? 'د. رغد الرفيعي ود. محمد مزهر' : 'Dr. Raghad & Dr. Mezher'}</span>
+                  </div>
+                </button>
+                <button class="dropdown-item ${appState.activeTab === 'rooms' ? 'active' : ''}" data-tab="rooms">
+                  ${createIcon('doorClosed', { size: 14 })}
+                  <div class="dropdown-item-info">
+                    <span class="dropdown-item-title">${isAr ? 'حجز القاعات ومعامل الحاسوب' : 'Labs & Study Pods'}</span>
+                    <span class="dropdown-item-desc">${isAr ? 'إياد، راكان، عبد العزيز ومؤقت المغادرة' : 'Teamwork & countdown timer'}</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Direct Tab: Analytics -->
+            <button class="nav-item ${appState.activeTab === 'analytics' ? 'active' : ''}" data-tab="analytics" title="${isAr ? 'مؤشرات الأداء والتحليلات' : 'Analytics'}">
               ${createIcon('barChart3', { size: 14 })}
               <span>${isAr ? 'التحليلات' : 'Analytics'}</span>
             </button>
@@ -957,6 +1073,7 @@ function renderApp() {
       ${renderHeroSection(isAr, totalSpots, availableCount, flexCount)}
       
       <div class="container" style="margin-top:2.5rem;">
+        ${renderCategorySubnav(isAr)}
         ${appState.activeTab === 'map' ? renderParkingMapTab(isAr) : ''}
         ${appState.activeTab === 'tutoring' ? renderTutoringTab(isAr) : ''}
         ${appState.activeTab === 'office-hours' ? renderOfficeHoursTab(isAr) : ''}
@@ -3658,7 +3775,8 @@ function closeModal() {
 // Interactive Listeners
 // ============================================================================
 function attachEventListeners() {
-  document.querySelectorAll('.nav-item').forEach(btn => {
+  // Tab change handlers across nav, dropdowns, and subnav chips
+  document.querySelectorAll('.nav-item[data-tab], .dropdown-item[data-tab], .subnav-chip-btn[data-tab]').forEach(btn => {
     btn.addEventListener('click', (e) => {
       soundFX.playClick();
       const tab = e.currentTarget.getAttribute('data-tab');
@@ -3667,6 +3785,24 @@ function attachEventListeners() {
         renderApp();
       }
     });
+  });
+
+  // Nav Dropdowns mobile & click toggle
+  document.querySelectorAll('.nav-dropdown-trigger').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const parent = trigger.closest('.nav-dropdown-group');
+      const wasOpen = parent?.classList.contains('open');
+      document.querySelectorAll('.nav-dropdown-group').forEach(g => g.classList.remove('open'));
+      if (!wasOpen && parent) {
+        parent.classList.add('open');
+      }
+    });
+  });
+
+  // Close dropdowns on outside document click
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.nav-dropdown-group').forEach(g => g.classList.remove('open'));
   });
 
   document.getElementById('hero-explore-map-btn')?.addEventListener('click', () => {

@@ -10,6 +10,7 @@ from parts_01_to_04 import get_sections_01_to_04
 from parts_05_to_08 import get_sections_05_to_08
 from parts_09_to_12 import get_sections_09_to_12
 from parts_13_to_15 import get_sections_13_to_15
+from parts_16_to_18 import get_sections_16_to_18
 from specs_data import render_uiux_breakdown_html
 
 def assemble_master_showcase():
@@ -1280,6 +1281,9 @@ def assemble_master_showcase():
       <a href="#f-devices" class="figma-nav-btn">13. الأجهزة المتجاوبة</a>
       <a href="#f-tokens" class="figma-nav-btn">14. الرموز التصميمية Tokens</a>
       <a href="#f-architecture" class="figma-nav-btn">15. معمارية وحالات النظام</a>
+      <a href="#f-tutoring" class="figma-nav-btn" style="color:var(--fbsu-gold);">16. النشاط والتدريس الطلابي</a>
+      <a href="#f-office-hours" class="figma-nav-btn" style="color:#38c2b0;">17. الساعات المكتبية للعمداء</a>
+      <a href="#f-rooms" class="figma-nav-btn" style="color:#60a5fa;">18. حجز القاعات والمعامل</a>
     </nav>
 
     <div class="figma-top-right">
@@ -1383,10 +1387,11 @@ def assemble_master_showcase():
         get_sections_01_to_04(),
         get_sections_05_to_08(),
         get_sections_09_to_12(),
-        get_sections_13_to_15()
+        get_sections_13_to_15(),
+        get_sections_16_to_18()
     ])
 
-    # Inject UI/UX Detailed Engineering Breakdown Cards for all 15 sections
+    # Inject UI/UX Detailed Engineering Breakdown Cards for all 18 sections
     id_to_num = {
         'f-header': 1,
         'f-hero': 2,
@@ -1402,7 +1407,10 @@ def assemble_master_showcase():
         'f-footer': 12,
         'f-devices': 13,
         'f-tokens': 14,
-        'f-architecture': 15
+        'f-architecture': 15,
+        'f-tutoring': 16,
+        'f-office-hours': 17,
+        'f-rooms': 18
     }
 
     for sec_id, num in id_to_num.items():

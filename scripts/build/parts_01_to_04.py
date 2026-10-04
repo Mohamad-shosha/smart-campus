@@ -153,11 +153,16 @@ def get_sections_01_to_04():
               
               <div class="nav-pills-scroll-wrapper">
                 <div class="nav-pills-cluster">
-                  <span class="btn btn-teal-primary" style="padding:4px 8px; font-size:11px; border-radius:999px;">خريطة المواقف</span>
-                  <span class="btn btn-ghost-outline-dark" style="padding:4px 8px; font-size:11px; border-radius:999px; border:none;">محاكاة التبادل</span>
-                  <span class="btn btn-ghost-outline-dark" style="padding:4px 8px; font-size:11px; border-radius:999px; border:none;">كاميرات ALPR</span>
-                  <span class="btn btn-ghost-outline-dark" style="padding:4px 8px; font-size:11px; border-radius:999px; border:none;">حجز موقف</span>
-                  <span class="btn btn-ghost-outline-dark" style="padding:4px 8px; font-size:11px; border-radius:999px; border:none;">شارك واربح</span>
+                  <span class="btn btn-teal-primary" style="padding:4px 10px; font-size:11px; border-radius:999px; display:inline-flex; align-items:center; gap:4px;">
+                    <span>المواقف الذكية</span>
+                    <span style="font-size:9px;">▾</span>
+                  </span>
+                  <span class="btn btn-ghost-outline-dark" style="padding:4px 10px; font-size:11px; border-radius:999px; border:none; display:inline-flex; align-items:center; gap:4px; color:var(--fbsu-gold);">
+                    <span>الحرم والأنشطة</span>
+                    <span style="width:5px; height:5px; border-radius:50%; background:var(--fbsu-gold);"></span>
+                    <span style="font-size:9px;">▾</span>
+                  </span>
+                  <span class="btn btn-ghost-outline-dark" style="padding:4px 8px; font-size:11px; border-radius:999px; border:none;">التحليلات</span>
                 </div>
               </div>
 
@@ -165,12 +170,26 @@ def get_sections_01_to_04():
                 <span class="btn btn-ghost-outline-dark" style="padding:3px 6px; font-size:10px;">🔊 صوت</span>
                 <span class="btn btn-ghost-outline-dark" style="padding:3px 6px; font-size:10px;">🌐 EN</span>
                 <span class="btn btn-ghost-outline-dark" style="padding:3px 6px; font-size:10px;">🌙 ليلي</span>
-                <span style="background:rgba(215,162,55,0.15); border:1px solid rgba(215,162,55,0.4); color:var(--fbsu-gold); padding:3px 8px; border-radius:999px; font-size:11px; font-weight:700;">72.50 ر.س</span>
+                <span style="background:rgba(215,162,55,0.12); border:1px solid rgba(215,162,55,0.4); color:var(--fbsu-gold); padding:2px 7px; border-radius:999px; font-size:10.5px; font-weight:800;">🔔 3</span>
+                <span style="background:rgba(215,162,55,0.15); border:1px solid rgba(215,162,55,0.4); color:var(--fbsu-gold); padding:3px 8px; border-radius:999px; font-size:11px; font-weight:700;">720.00 ر.س</span>
                 <div style="display:flex; align-items:center; gap:5px; background:rgba(255,255,255,0.05); padding:2px 7px; border-radius:999px;">
                   <span style="width:20px; height:20px; border-radius:50%; background:var(--fbsu-teal); display:inline-flex; align-items:center; justify-content:center; font-size:9.5px; font-weight:800; color:#fff;">إ</span>
                   <span style="font-size:11px; color:#fff; font-weight:600;">إياد (طالب)</span>
                 </div>
               </div>
+            </div>
+
+            <!-- Category Subnav Ribbon Dark -->
+            <div style="background:rgba(11,26,24,0.9); border-top:1px solid rgba(255,255,255,0.06); padding:6px 16px; display:flex; gap:8px; justify-content:center; font-size:10.5px;">
+              <span style="color:#10b981; font-weight:700;">خريطة المواقف الحية</span>
+              <span style="color:#64748b;">•</span>
+              <span style="color:#cbd5e1;">حجز موقف وتصريح</span>
+              <span style="color:#64748b;">•</span>
+              <span style="color:#cbd5e1;">محاكاة التبادل</span>
+              <span style="color:#64748b;">•</span>
+              <span style="color:#cbd5e1;">كاميرات ALPR</span>
+              <span style="color:#64748b;">•</span>
+              <span style="color:#cbd5e1;">شارك واربح</span>
             </div>
           </div>
         </div>
@@ -198,7 +217,7 @@ def get_sections_01_to_04():
                     <span style="width:6px; height:6px; background:#a7f3d0; border-radius:50%;"></span>
                     <span>جامعة فهد بن سلطان - تبوك</span>
                   </span>
-                  <span>بوابة المواقف الذكية</span>
+                  <span>بوابة المواقف والحرم الذكي</span>
                   <span style="color:#fef08a;">التبادل الذكي: 2 مواقف متاحة</span>
                 </div>
                 <div class="ribbon-cluster-right">
@@ -217,11 +236,16 @@ def get_sections_01_to_04():
               
               <div class="nav-pills-scroll-wrapper">
                 <div class="nav-pills-cluster-light">
-                  <span class="btn btn-teal-primary" style="padding:4px 8px; font-size:11px; border-radius:999px;">خريطة المواقف</span>
-                  <span class="btn btn-ghost-outline-light" style="padding:4px 8px; font-size:11px; border-radius:999px; border:none;">محاكاة التبادل</span>
-                  <span class="btn btn-ghost-outline-light" style="padding:4px 8px; font-size:11px; border-radius:999px; border:none;">كاميرات ALPR</span>
-                  <span class="btn btn-ghost-outline-light" style="padding:4px 8px; font-size:11px; border-radius:999px; border:none;">حجز موقف</span>
-                  <span class="btn btn-ghost-outline-light" style="padding:4px 8px; font-size:11px; border-radius:999px; border:none;">شارك واربح</span>
+                  <span class="btn btn-teal-primary" style="padding:4px 10px; font-size:11px; border-radius:999px; display:inline-flex; align-items:center; gap:4px;">
+                    <span>المواقف الذكية</span>
+                    <span style="font-size:9px;">▾</span>
+                  </span>
+                  <span class="btn btn-ghost-outline-light" style="padding:4px 10px; font-size:11px; border-radius:999px; border:none; display:inline-flex; align-items:center; gap:4px; color:#b45309;">
+                    <span>الحرم والأنشطة</span>
+                    <span style="width:5px; height:5px; border-radius:50%; background:#d7a237;"></span>
+                    <span style="font-size:9px;">▾</span>
+                  </span>
+                  <span class="btn btn-ghost-outline-light" style="padding:4px 8px; font-size:11px; border-radius:999px; border:none;">التحليلات</span>
                 </div>
               </div>
 
@@ -229,12 +253,26 @@ def get_sections_01_to_04():
                 <span class="btn btn-ghost-outline-light" style="padding:3px 6px; font-size:10px;">🔊 صوت</span>
                 <span class="btn btn-ghost-outline-light" style="padding:3px 6px; font-size:10px;">🌐 EN</span>
                 <span class="btn btn-ghost-outline-light" style="padding:3px 6px; font-size:10px;">☀️ نهاري</span>
-                <span style="background:rgba(215,162,55,0.15); border:1px solid rgba(215,162,55,0.5); color:#a16207; padding:3px 8px; border-radius:999px; font-size:11px; font-weight:800;">72.50 ر.س</span>
+                <span style="background:rgba(215,162,55,0.12); border:1px solid rgba(215,162,55,0.4); color:#b45309; padding:2px 7px; border-radius:999px; font-size:10.5px; font-weight:800;">🔔 3</span>
+                <span style="background:rgba(215,162,55,0.15); border:1px solid rgba(215,162,55,0.5); color:#a16207; padding:3px 8px; border-radius:999px; font-size:11px; font-weight:800;">720.00 ر.س</span>
                 <div style="display:flex; align-items:center; gap:5px; background:#f8fafc; border:1px solid #e2e8f0; padding:2px 7px; border-radius:999px;">
                   <span style="width:20px; height:20px; border-radius:50%; background:var(--fbsu-teal); display:inline-flex; align-items:center; justify-content:center; font-size:9.5px; font-weight:800; color:#fff;">إ</span>
                   <span style="font-size:11px; color:#0f172a; font-weight:700;">إياد (طالب)</span>
                 </div>
               </div>
+            </div>
+
+            <!-- Category Subnav Ribbon Light -->
+            <div style="background:#f1f5f9; border-top:1px solid #e2e8f0; padding:6px 16px; display:flex; gap:8px; justify-content:center; font-size:10.5px;">
+              <span style="color:#116E63; font-weight:700;">خريطة المواقف الحية</span>
+              <span style="color:#94a3b8;">•</span>
+              <span style="color:#475569;">حجز موقف وتصريح</span>
+              <span style="color:#94a3b8;">•</span>
+              <span style="color:#475569;">محاكاة التبادل</span>
+              <span style="color:#94a3b8;">•</span>
+              <span style="color:#475569;">كاميرات ALPR</span>
+              <span style="color:#94a3b8;">•</span>
+              <span style="color:#475569;">شارك واربح</span>
             </div>
           </div>
         </div>
