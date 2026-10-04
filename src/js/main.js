@@ -128,50 +128,438 @@ const soundFX = new AudioSynthesizer();
 // ============================================================================
 // University Data & Personas
 // ============================================================================
+// University Data & Personas
+// ============================================================================
 const USERS = {
   eyad: {
     id: '20210045',
     name: 'إياد الحربي',
     nameEn: 'Eyad Al-Harbi',
-    role: 'طالب - كلية الهندسة',
-    roleEn: 'Student - College of Engineering',
+    role: 'طالب متميز - كلية الهندسة (معلم أقران)',
+    roleEn: 'Honor Student - Engineering (Math Peer Tutor)',
+    college: 'كلية الهندسة',
     car: 'تويوتا كامري 2023',
     carEn: 'Toyota Camry 2023',
     plateLetters: 'ب ط ك',
     plateNumbers: '1234',
-    walletBalance: 72.50,
+    walletBalance: 720.00, // Accumulated 720 SAR from tutoring & flex sharing
+    tuitionFeesTotal: 12000.00,
+    tuitionFeesPaid: 4500.00,
     primarySpot: 1,
-    schedule: 'أحد / ثلاثاء (08:00 - 10:00 & 01:30 - 03:30)'
+    schedule: 'أحد / ثلاثاء (08:00 - 10:00 & 01:30 - 03:30)',
+    specialty: 'الرياضيات المتقدمة والهندسة (Calculus & Engineering Math)',
+    rating: 4.96,
+    tutoringSessionsCount: 14,
+    avatarColor: '#116E63'
   },
   rakan: {
     id: '20220088',
     name: 'راكان المطيري',
     nameEn: 'Rakan Al-Mutairi',
-    role: 'طالب - كلية الحاسب الآلي',
-    roleEn: 'Student - College of Computing',
+    role: 'طالب متميز - كلية الحاسب الآلي (معلم برمجة)',
+    roleEn: 'Honor Student - Computing (Coding Peer Tutor)',
+    college: 'كلية الحاسب الآلي',
     car: 'هيونداي سوناتا 2024',
     carEn: 'Hyundai Sonata 2024',
     plateLetters: 'د ل س',
     plateNumbers: '8892',
-    walletBalance: 120.00,
+    walletBalance: 280.00,
+    tuitionFeesTotal: 11500.00,
+    tuitionFeesPaid: 6000.00,
     primarySpot: 2,
-    schedule: 'أحد / ثلاثاء (10:15 - 01:00)'
+    schedule: 'أحد / ثلاثاء (10:15 - 01:00)',
+    specialty: 'البرمجة بلغة بايثون وهياكل البيانات (Python & Data Structures)',
+    rating: 4.90,
+    tutoringSessionsCount: 9,
+    avatarColor: '#d7a237'
+  },
+  abdulaziz: {
+    id: '20220199',
+    name: 'عبد العزيز البلوي',
+    nameEn: 'Abdulaziz Al-Balawi',
+    role: 'طالب - كلية الحاسب الآلي (مجموعة العمل)',
+    roleEn: 'Student - College of Computing (Team Member)',
+    college: 'كلية الحاسب الآلي',
+    car: 'فورد تورس 2022',
+    carEn: 'Ford Taurus 2022',
+    plateLetters: 'ع ب د',
+    plateNumbers: '4090',
+    walletBalance: 150.00,
+    tuitionFeesTotal: 11500.00,
+    tuitionFeesPaid: 3000.00,
+    primarySpot: 5,
+    schedule: 'أحد / ثلاثاء (09:00 - 01:00)',
+    avatarColor: '#3b82f6'
+  },
+  drRaghad: {
+    id: 'FAC-8821',
+    name: 'د. رغد الرفيعي',
+    nameEn: 'Dr. Raghad Al-Rifaei',
+    role: 'رئيسة قسم كلية الحاسبات وتكنولوجيا المعلومات',
+    roleEn: 'Chairperson - Department of Computer Science',
+    college: 'كلية الحاسب الآلي',
+    department: 'قسم علوم وهندسة الحاسب',
+    office: 'مبنى كلية الحاسب - مكتب C-105',
+    email: 'r.alrifaei@fbsu.edu.sa',
+    car: 'بي إم دبليو X5',
+    carEn: 'BMW X5',
+    plateLetters: 'ر غ د',
+    plateNumbers: '2030',
+    walletBalance: 850.00,
+    primarySpot: 22,
+    schedule: 'الأحد والثلاثاء (10:00 ص - 01:00 م)',
+    avatarColor: '#116E63',
+    badge: 'رئيسة القسم الأكاديمي',
+    isFaculty: true
+  },
+  drMezher: {
+    id: 'FAC-7700',
+    name: 'د. محمد مزهر',
+    nameEn: 'Dr. Mohammad Mezher',
+    role: 'عميد كلية الحاسب الآلي وتقنية المعلومات',
+    roleEn: 'Dean - College of Computing & IT',
+    college: 'كلية الحاسب الآلي',
+    department: 'عمادة كلية الحاسب الآلي',
+    office: 'مبنى الإدارة الأكاديمية - جناح العميد C-201',
+    email: 'm.mezher@fbsu.edu.sa',
+    car: 'مرسيدس S-Class',
+    carEn: 'Mercedes S-Class',
+    plateLetters: 'م ز هـ',
+    plateNumbers: '5000',
+    walletBalance: 1200.00,
+    primarySpot: 20,
+    schedule: 'الاثنين والأربعاء (11:00 ص - 03:00 م)',
+    avatarColor: '#d7a237',
+    badge: 'عميد الكلية',
+    isFaculty: true
   },
   doctor: {
     id: 'FAC-9912',
     name: 'د. عبد الله الغامدي',
     nameEn: 'Dr. Abdullah Al-Ghamdi',
-    role: 'أستاذ مشارك - عمادة كلية الحاسب',
-    roleEn: 'Associate Prof. - Computing Dean',
+    role: 'أستاذ مشارك - منسق مشاريع التخرج',
+    roleEn: 'Associate Prof. - Capstone Coordinator',
+    college: 'كلية الحاسب والهندسة',
+    office: 'مبنى الهندسة - مكتب A-114',
     car: 'جينيسيس G80',
     carEn: 'Genesis G80',
     plateLetters: 'أ ح م',
     plateNumbers: '5501',
-    walletBalance: 350.00,
+    walletBalance: 450.00,
     primarySpot: 19,
-    schedule: 'يومي (08:00 - 04:00)'
+    schedule: 'يومي (08:00 - 04:00)',
+    avatarColor: '#8b5cf6',
+    badge: 'أستاذ مشارك',
+    isFaculty: true
   }
 };
+
+// ============================================================================
+// Student Peer Tutoring Sessions (الأنشطة والشروحات الطلابية)
+// ============================================================================
+const INITIAL_TUTORING_SESSIONS = [
+  {
+    id: 'TUT-101',
+    tutorId: 'eyad',
+    tutorName: 'إياد الحربي',
+    tutorRole: 'طالب متميز - كلية الهندسة',
+    tutorAvatarColor: '#116E63',
+    courseCode: 'MATH 101 / MATH 201',
+    courseName: 'حساب التفاضل والتكامل والرياضيات الهندسية',
+    courseNameEn: 'Calculus & Engineering Mathematics',
+    coveredLectures: 'المحاضرات 1 إلى 4 (Lectures 1, 2, 3, 4)',
+    coveredScope: 'شرح مبسط لمفاهيم النهايات والاشتقاق، وحل أسئلة الواجبات ونماذج الاختبارات السابقة حتى نهاية الشابتر.',
+    hourlyRate: 70, // 70 SAR as requested in audio!
+    durationHours: 1,
+    totalPrice: 70,
+    dateTime: 'اليوم الأحد - 04:30 م',
+    location: 'قاعة المذاكرة الذكية A-04 (أو أونلاين عبر المنصة)',
+    category: 'math',
+    rating: 4.96,
+    reviewsCount: 28,
+    status: 'open',
+    enrolledStudents: ['راكان المطيري']
+  },
+  {
+    id: 'TUT-102',
+    tutorId: 'rakan',
+    tutorName: 'راكان المطيري',
+    tutorRole: 'طالب متميز - كلية الحاسب الآلي',
+    tutorAvatarColor: '#d7a237',
+    courseCode: 'CS 110 / CS 210',
+    courseName: 'مبادئ البرمجة وهياكل البيانات (Python & C++)',
+    courseNameEn: 'Programming & Data Structures',
+    coveredLectures: 'الشابتر الأول والثاني كاملاً (Chapters 1 & 2)',
+    coveredScope: 'كتابة الأكواد العملية، خوارزميات الترتيب والبحث، وحل أسئلة الكلاس وورك والتكليف الأسبوعي.',
+    hourlyRate: 70,
+    durationHours: 1,
+    totalPrice: 70,
+    dateTime: 'غداً الاثنين - 02:00 م',
+    location: 'معمل الحاسب 102 (Computer Lab 102)',
+    category: 'programming',
+    rating: 4.92,
+    reviewsCount: 19,
+    status: 'open',
+    enrolledStudents: ['عبد العزيز البلوي']
+  },
+  {
+    id: 'TUT-103',
+    tutorId: 'student_sara',
+    tutorName: 'سارة البلوي',
+    tutorRole: 'طالبة متميزة - هندسة الحاسب',
+    tutorAvatarColor: '#ec4899',
+    courseCode: 'CEN 220',
+    courseName: 'التصميم المنطقي الرقمي (Digital Logic Design)',
+    courseNameEn: 'Digital Logic & Circuit Design',
+    coveredLectures: 'المحاضرات 1 إلى 4 (Lectures 1, 2, 3, 4)',
+    coveredScope: 'شرح خرائط كارنوف (K-Maps)، تبسيط الدوائر المنطقية، وبوابات NAND/NOR والتطبيق على حقائب المعمل.',
+    hourlyRate: 70,
+    durationHours: 1,
+    totalPrice: 70,
+    dateTime: 'الثلاثاء - 01:15 م',
+    location: 'معمل التصميم المنطقي Lab 205',
+    category: 'hardware',
+    rating: 4.98,
+    reviewsCount: 15,
+    status: 'open',
+    enrolledStudents: []
+  },
+  {
+    id: 'TUT-104',
+    tutorId: 'eyad',
+    tutorName: 'إياد الحربي',
+    tutorRole: 'طالب متميز - كلية الهندسة',
+    tutorAvatarColor: '#116E63',
+    courseCode: 'PHYS 101',
+    courseName: 'الفيزياء العامة (الميكانيكا والديناميكا)',
+    courseNameEn: 'General Physics & Mechanics',
+    coveredLectures: 'مراجعة الميدتيرم الشاملة (المحاضرة 1 حتى 5)',
+    coveredScope: 'قوانين نيوتن للحركة وحفظ الطاقة الميكانيكية وتطبيقات المسائل الهندسية المعقدة.',
+    hourlyRate: 70,
+    durationHours: 1.5,
+    totalPrice: 105,
+    dateTime: 'الأربعاء - 05:00 م',
+    location: 'قاعة المذاكرة B-12',
+    category: 'math',
+    rating: 4.95,
+    reviewsCount: 31,
+    status: 'open',
+    enrolledStudents: ['عبد العزيز البلوي']
+  }
+];
+
+// ============================================================================
+// Faculty Members & Office Hours (حجز الساعات المكتبية للقيادات والدكاترة)
+// ============================================================================
+const FACULTY_MEMBERS = [
+  {
+    id: 'drRaghad',
+    name: 'د. رغد الرفيعي',
+    nameEn: 'Dr. Raghad Al-Rifaei',
+    rank: 'رئيسة قسم كلية الحاسبات وتكنولوجيا المعلومات',
+    rankEn: 'Chairperson - Computer Science & Engineering Dept',
+    college: 'كلية الحاسب الآلي',
+    office: 'مكتب رئيسة القسم - مبنى الحاسب C-105',
+    email: 'r.alrifaei@fbsu.edu.sa',
+    badge: 'رئيسة القسم',
+    avatarColor: '#116E63',
+    daysText: 'الأحد والثلاثاء (10:00 ص - 12:30 م)',
+    nextAvailable: 'اليوم الأحد: 11:15 ص',
+    coursesSupervised: [
+      'التصميم المنطقي (Logic Design)',
+      'معمارية الحاسب (Computer Architecture)',
+      'الإشراف على مشاريع التخرج',
+      'الإرشاد الأكاديمي ومعادلة المقررات'
+    ],
+    timeSlots: [
+      { time: '11:00 ص', duration: '15 دقيقة', available: true },
+      { time: '11:15 ص', duration: '15 دقيقة', available: true },
+      { time: '11:30 ص', duration: '30 دقيقة', available: false, bookedNote: 'محجوز - مناقشة مشروع تخرج' },
+      { time: '12:00 م', duration: '15 دقيقة', available: true },
+      { time: '12:15 م', duration: '15 دقيقة', available: true }
+    ]
+  },
+  {
+    id: 'drMezher',
+    name: 'د. محمد مزهر',
+    nameEn: 'Dr. Mohammad Mezher',
+    rank: 'عميد كلية الحاسب الآلي وتقنية المعلومات',
+    rankEn: 'Dean - College of Computing & Information Technology',
+    college: 'كلية الحاسب الآلي',
+    office: 'جناح العميد - مبنى الإدارة الأكاديمية C-201',
+    email: 'm.mezher@fbsu.edu.sa',
+    badge: 'عميد الكلية',
+    avatarColor: '#d7a237',
+    daysText: 'الاثنين والأربعاء (11:00 ص - 02:00 م)',
+    nextAvailable: 'الاثنين القادم: 01:15 م',
+    coursesSupervised: [
+      'مبادرات الذكاء الاصطناعي والحوسبة المتقدمة',
+      'مناقشة الأفكار البحثية ومشاريع التخرج الكبرى',
+      'الشؤون الأكاديمية والخطط الدراسية',
+      'اعتماد الشراكات والهاكاثونات الطلابية'
+    ],
+    timeSlots: [
+      { time: '01:00 م', duration: '15 دقيقة', available: true },
+      { time: '01:15 م', duration: '30 دقيقة', available: true },
+      { time: '01:45 م', duration: '15 دقيقة', available: false, bookedNote: 'اجتماع مجلس الكلية' },
+      { time: '02:00 م', duration: '30 دقيقة', available: true }
+    ]
+  },
+  {
+    id: 'doctor',
+    name: 'د. عبد الله الغامدي',
+    nameEn: 'Dr. Abdullah Al-Ghamdi',
+    rank: 'أستاذ مشارك - منسق مشاريع التخرج',
+    rankEn: 'Associate Professor - Capstone Coordinator',
+    college: 'كلية الحاسب والهندسة',
+    office: 'مبنى الهندسة - مكتب A-114',
+    email: 'a.ghamdi@fbsu.edu.sa',
+    badge: 'أستاذ مشارك',
+    avatarColor: '#8b5cf6',
+    daysText: 'يومياً (01:00 م - 02:00 م)',
+    nextAvailable: 'اليوم: 01:30 م',
+    coursesSupervised: [
+      'هندسة البرمجيات وتطوير النظم',
+      'قواعد البيانات ونظم المعلومات',
+      'لجنة تحكيم مشاريع التخرج'
+    ],
+    timeSlots: [
+      { time: '01:00 م', duration: '15 دقيقة', available: true },
+      { time: '01:15 م', duration: '15 دقيقة', available: true },
+      { time: '01:30 م', duration: '15 دقيقة', available: true },
+      { time: '01:45 م', duration: '15 دقيقة', available: true }
+    ]
+  }
+];
+
+// ============================================================================
+// Study Rooms & Laboratories (حجز القاعات والمعامل الطلابية)
+// ============================================================================
+const INITIAL_STUDY_ROOMS = [
+  {
+    id: 'LAB-102',
+    name: 'معمل الحاسب وتطوير البرمجيات (Computer Lab 102)',
+    nameEn: 'Computer Software Lab 102',
+    building: 'مبنى كلية الحاسب - الدور الأرضي',
+    capacity: '24 جهاز ورك ستيشن / طالب',
+    typeBadge: 'معمل حاسب',
+    status: 'in-use', // In use by Eyad, Rakan, Abdulaziz as stated in the audio!
+    activeBooking: {
+      teamLead: 'إياد الحربي',
+      teamMembers: ['إياد الحربي (Classwork)', 'راكان المطيري (Assignment)', 'عبد العزيز البلوي (Homework)'],
+      purpose: 'إنجاز التكاليف والمهام المشتركة (Classwork & Assignment)',
+      startTime: '09:00 ص',
+      endTime: '09:20 ص',
+      totalMinutes: 20,
+      remainingMinutes: 11
+    },
+    specs: [
+      '24 جهاز iMac و HP Workstation مجهزة بـ Python و Java و VS Code',
+      'إنترنت ألياف ضوئية فائق السرعة مخصص للمشاريع والتحميل',
+      'شاشة ذكية 85 بوصة للعرض والمراجعة الجماعية للأكواد',
+      'طابعة ليزر سريعة لطباعة التقارير والأبحاث'
+    ],
+    availableFrom: '09:20 ص (بعد انتهاء الجلسة المحددة)'
+  },
+  {
+    id: 'ROOM-A04',
+    name: 'قاعة المذاكرة والعمل الجماعي الذكية (Study Room A-04)',
+    nameEn: 'Collaborative Study Pod A-04',
+    building: 'مبنى كلية الهندسة - الدور الأول',
+    capacity: '6 إلى 8 طلاب',
+    typeBadge: 'قاعة نقاش',
+    status: 'available',
+    specs: [
+      'طاولة اجتماعات تفاعلية مع منافذ طاقة وشواحن Type-C متعددة',
+      'سبورة ذكية تفاعلية Interactive Whiteboard مع خاصية حفظ الملاحظات',
+      'شاشة عرض لاسلكية تدعم AirPlay و Miracast',
+      'عازل صوتي متكامل لضمان هدوء المذاكرة والتركيز'
+    ],
+    availableFrom: 'متاحة للحجز الفوري الآن'
+  },
+  {
+    id: 'LAB-205',
+    name: 'معمل التصميم المنطقي والدوائر الرقمية (Logic Design Lab 205)',
+    nameEn: 'Digital Logic & Circuit Lab 205',
+    building: 'مبنى كلية الهندسة والحاسب - الدور الثاني',
+    capacity: '16 محطة تجارب هندسية',
+    typeBadge: 'معمل عتاد ودوائر',
+    status: 'available',
+    specs: [
+      'حقائب تدريبية متقدمة FPGA و Digital Logic Trainers',
+      'أجهزة راسم إشارة Oscilloscopes ومولدات إشارات ترددية',
+      'أطقم بوابات منطقية متكاملة (AND, OR, NOT, NAND, XOR)',
+      'إشراف فني متخصص وتجهيزات سلامة مهنية'
+    ],
+    availableFrom: 'متاحة للحجز الفوري الآن'
+  },
+  {
+    id: 'ROOM-C12',
+    name: 'حاضنة مشاريع التخرج والابتكار (Capstone Hub C-12)',
+    nameEn: 'Senior Capstone & Innovation Hub C-12',
+    building: 'مبنى عمادة الحاسب - الدور الثاني',
+    capacity: '12 طالب',
+    typeBadge: 'حاضنة مشاريع',
+    status: 'reserved',
+    activeBooking: {
+      teamLead: 'فريق مشروع منظومة الحرم الجامعي الذكي',
+      teamMembers: ['إياد الحربي', 'راكان المطيري', 'عبد العزيز البلوي'],
+      purpose: 'استعراض النموذج النهائي واختبار الربط المباشر مع الدكاترة',
+      startTime: '10:00 ص',
+      endTime: '11:00 ص',
+      totalMinutes: 60,
+      remainingMinutes: 44
+    },
+    specs: [
+      'طابعات ثلاثية الأبعاد 3D Printers ومحطات تصنيع نماذج أولية',
+      'حقائب إنترنت الأشياء IoT وحساسات ESP32 وكاميرات ALPR',
+      'شاشات عرض مزدوجة Dual 4K لمراجعة البرمجيات'
+    ],
+    availableFrom: '11:00 ص'
+  }
+];
+
+// ============================================================================
+// Direct Alerts & Notifications (نظام الإشعارات المباشرة للدكاترة والطلاب)
+// ============================================================================
+const INITIAL_NOTIFICATIONS = [
+  {
+    id: 'notif-1',
+    target: 'drRaghad',
+    targetName: 'د. رغد الرفيعي (رئيسة القسم)',
+    sender: 'إياد الحربي (20210045)',
+    title: 'طلب حجز ساعة مكتبية - مناقشة مادة Logic Design',
+    message: 'قام الطالب إياد الحربي بحجز موعد لمدة 15 دقيقة (الأحد 11:15 ص) لمناقشة استفسار في مشروع مادة Logic Design.',
+    time: 'منذ 5 دقائق',
+    read: false,
+    icon: 'userCheck',
+    badge: 'موعد مؤكد'
+  },
+  {
+    id: 'notif-2',
+    target: 'eyad',
+    targetName: 'إياد الحربي',
+    sender: 'النظام المالي الجامعي',
+    title: 'إيداع رصيد جامعي: + 70.00 ر.س (شروحات أكاديمية)',
+    message: 'قام الزميل راكان المطيري بحجز جلسة شرح (MATH 101). تم تحويل 70.00 ر.س تلقائياً إلى رصيدك بالجامعة ويمكنك استخدامها لسداد الرسوم أو حجز المواقف.',
+    time: 'منذ 15 دقيقة',
+    read: false,
+    icon: 'wallet',
+    badge: 'رصيد جديد'
+  },
+  {
+    id: 'notif-3',
+    target: 'drMezher',
+    targetName: 'د. محمد مزهر (عميد الكلية)',
+    sender: 'راكان المطيري (20220088)',
+    title: 'إشعار مقابلة عميد الكلية - مناقشة ابتكار المنظومة الذكية',
+    message: 'طلب الطالب راكان المطيري موعداً في الساعات المكتبية (الاثنين 01:15 م) لعرض مبادرة تحويل المنصة إلى نظام حرم جامعي متكامل.',
+    time: 'منذ 25 دقيقة',
+    read: false,
+    icon: 'userCheck',
+    badge: 'جديد'
+  }
+];
 
 // 30 Detailed Parking Spots
 const INITIAL_PARKING_SPOTS = [
@@ -221,7 +609,12 @@ const appState = {
   currentLang: 'ar',
   activeTab: 'map',
   activeZoneFilter: 'all',
+  tutoringFilter: 'all',
   parkingSpots: JSON.parse(JSON.stringify(INITIAL_PARKING_SPOTS)),
+  tutoringSessions: JSON.parse(JSON.stringify(INITIAL_TUTORING_SESSIONS)),
+  facultyMembers: JSON.parse(JSON.stringify(FACULTY_MEMBERS)),
+  studyRooms: JSON.parse(JSON.stringify(INITIAL_STUDY_ROOMS)),
+  notifications: JSON.parse(JSON.stringify(INITIAL_NOTIFICATIONS)),
 
   // Simulator State
   simStep: 0,
@@ -233,7 +626,8 @@ const appState = {
   gateArmOpen: false,
   gateScannedPlate: 'ب ط ك 1234',
 
-  selectedSpot: null
+  selectedSpot: null,
+  activeRoomCountdown: 11 // minutes left in Lab 102
 };
 
 // ============================================================================
@@ -477,6 +871,18 @@ function renderApp() {
               ${createIcon('mapPin', { size: 14 })}
               <span>${isAr ? 'خريطة المواقف' : 'Live Map'}</span>
             </button>
+            <button class="nav-item ${appState.activeTab === 'tutoring' ? 'active' : ''}" data-tab="tutoring">
+              ${createIcon('bookOpen', { size: 14 })}
+              <span>${isAr ? 'الأنشطة والشروحات' : 'Peer Tutoring'}</span>
+            </button>
+            <button class="nav-item ${appState.activeTab === 'office-hours' ? 'active' : ''}" data-tab="office-hours">
+              ${createIcon('userCheck', { size: 14 })}
+              <span>${isAr ? 'الساعات المكتبية' : 'Office Hours'}</span>
+            </button>
+            <button class="nav-item ${appState.activeTab === 'rooms' ? 'active' : ''}" data-tab="rooms">
+              ${createIcon('doorClosed', { size: 14 })}
+              <span>${isAr ? 'القاعات والمعامل' : 'Labs & Rooms'}</span>
+            </button>
             <button class="nav-item ${appState.activeTab === 'simulator' ? 'active' : ''}" data-tab="simulator">
               ${createIcon('zap', { size: 14 })}
               <span>${isAr ? 'محاكاة التبادل' : 'Flex Swap Demo'}</span>
@@ -519,16 +925,22 @@ function renderApp() {
             </button>
           </div>
 
+          <!-- Direct Notifications Button -->
+          <button class="wallet-badge-btn" id="open-notifications-btn" title="${isAr ? 'الإشعارات الأكاديمية المباشرة للدكاترة والطلاب' : 'Direct Campus Alerts'}" style="background:rgba(215, 162, 55, 0.12); border-color:var(--fbsu-gold-border); gap:0.4rem;">
+            ${createIcon('bell', { size: 14, color: 'var(--fbsu-gold)' })}
+            <span style="font-size:0.78rem; font-weight:800; color:var(--fbsu-gold);">${appState.notifications.filter(n => !n.read).length || 3}</span>
+          </button>
+
           <!-- Wallet Button -->
-          <button class="wallet-badge-btn" id="open-wallet-btn" title="${isAr ? 'رصيد المحفظة الجامعية' : 'University Wallet Balance'}">
+          <button class="wallet-badge-btn" id="open-wallet-btn" title="${isAr ? 'رصيد المحفظة وسداد الرسوم' : 'University Balance & Tuition'}">
             ${createIcon('wallet', { size: 13, color: 'var(--fbsu-gold)' })}
             <span>${user.walletBalance.toFixed(2)} ر.س</span>
           </button>
 
           <!-- Auth / Profile Button -->
-          <button class="auth-btn-header" id="open-auth-btn" title="${isAr ? 'الملف الشخصي والحساب الأكاديمي' : 'Academic Profile'}">
-            ${createIcon('user', { size: 13, color: '#ffffff' })}
-            <span>${appState.isLoggedIn ? (user.name.split(' ')[0] + ' (' + user.role.split(' ')[0] + ')') : (isAr ? 'تسجيل الدخول' : 'Sign In')}</span>
+          <button class="auth-btn-header" id="open-auth-btn" title="${isAr ? 'الملف الشخصي وتبديل المستخدم' : 'Academic Profile'}">
+            <span style="width:8px; height:8px; border-radius:50%; background:${user.avatarColor || '#116E63'}; display:inline-block;"></span>
+            <span>${user.name.split(' ')[0]} (${user.role.split(' ')[0]})</span>
           </button>
 
           <!-- Figma UI/UX Showcase Link Button -->
@@ -546,6 +958,9 @@ function renderApp() {
       
       <div class="container" style="margin-top:2.5rem;">
         ${appState.activeTab === 'map' ? renderParkingMapTab(isAr) : ''}
+        ${appState.activeTab === 'tutoring' ? renderTutoringTab(isAr) : ''}
+        ${appState.activeTab === 'office-hours' ? renderOfficeHoursTab(isAr) : ''}
+        ${appState.activeTab === 'rooms' ? renderRoomsTab(isAr) : ''}
         ${appState.activeTab === 'simulator' ? renderSimulatorTab(isAr) : ''}
         ${appState.activeTab === 'gate' ? renderGateScannerTab(isAr) : ''}
         ${appState.activeTab === 'booking' ? renderBookingTab(isAr) : ''}
@@ -594,15 +1009,19 @@ function renderHeroSection(isAr, totalSpots, availableCount, flexCount) {
             <div class="hero-cta-group">
               <button class="btn-primary" id="hero-explore-map-btn">
                 ${createIcon('mapPin', { size: 18, color: '#ffffff' })}
-                <span>${isAr ? 'عرض خريطة المواقف الـ 30' : 'Explore 30 Spots Map'}</span>
+                <span>${isAr ? 'خريطة المواقف' : 'Explore Parking'}</span>
               </button>
-              <button class="btn-gold" id="hero-run-sim-btn">
-                ${createIcon('zap', { size: 18, color: '#0b1a17' })}
-                <span>${isAr ? 'تجربة سيناريو التبادل الذكي (إياد وراكان)' : 'Experience Smart Swapping Scenario'}</span>
+              <button class="btn-gold" id="hero-quick-tutoring-btn">
+                ${createIcon('bookOpen', { size: 18, color: '#0b1a17' })}
+                <span>${isAr ? 'شروحات الأقران (70 ر.س)' : 'Peer Tutoring (70 SAR)'}</span>
               </button>
-              <button class="btn-outline" id="hero-quick-gate-btn">
-                ${createIcon('camera', { size: 18 })}
-                <span>${isAr ? 'محاكاة قارئ اللوحات' : 'Test Gate ALPR'}</span>
+              <button class="btn-outline" id="hero-quick-office-btn">
+                ${createIcon('userCheck', { size: 18 })}
+                <span>${isAr ? 'الساعات المكتبية (د. رغد ود. محمد مزهر)' : 'Office Hours'}</span>
+              </button>
+              <button class="btn-outline" id="hero-quick-rooms-btn">
+                ${createIcon('doorClosed', { size: 18 })}
+                <span>${isAr ? 'حجز القاعات والمعامل' : 'Study Pods & Labs'}</span>
               </button>
             </div>
           </div>
@@ -1394,6 +1813,394 @@ function renderShareTab(isAr) {
 }
 
 // ============================================================================
+// Tab 2: Student Peer Tutoring & Academic Activities (الأنشطة والشروحات الطلابية)
+// ============================================================================
+function renderTutoringTab(isAr) {
+  const filter = appState.tutoringFilter;
+  const sessions = appState.tutoringSessions.filter(s => {
+    if (filter === 'all') return true;
+    return s.category === filter;
+  });
+
+  const currentUser = appState.currentUser;
+
+  return `
+    <div class="section-head">
+      <span class="section-eyebrow">
+        ${createIcon('bookOpen', { size: 16, color: 'var(--fbsu-gold)' })}
+        <span>${isAr ? 'الأنشطة الطلابية وشروحات الأقران' : 'Peer Tutoring & Student Economy'}</span>
+      </span>
+      <h3 class="section-title">${isAr ? 'منظومة الشروحات الطلابية والرصيد الجامعي الذكي' : 'FBSU Peer Tutoring & Academic Wallet Hub'}</h3>
+      <p class="section-subtitle">
+        ${isAr
+          ? 'منصة رسمية تتيح للطلاب المتميزين (مثل إياد في الرياضيات وراكان في البرمجة) تقديم شروحات للمحاضرات والشباتر بأسعار محددة (70 ر.س / ساعة). لا تُحول المبالغ كاش؛ بل تتحول تلقائياً إلى "رصيد جامعي" معتمد في محفظة الطالب يُسدد به رسوم جامعته أو مواقفه!'
+          : 'Distinguished students (e.g. Eyad in Math, Rakan in Coding) provide peer tutoring at 70 SAR/hour. Earnings transfer directly into University Balance to settle tuition fees or parking!'
+        }
+      </p>
+    </div>
+
+    <!-- Student Economy Banner -->
+    <div style="background:linear-gradient(135deg, rgba(17,110,99,0.2), rgba(215,162,55,0.15)); border:1px solid var(--fbsu-gold-border); border-radius:var(--radius-xl); padding:1.4rem 1.6rem; margin-bottom:2rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.25rem;">
+      <div style="display:flex; align-items:center; gap:1rem;">
+        <div style="width:46px; height:46px; border-radius:var(--radius-lg); background:var(--fbsu-gold-light); color:var(--fbsu-gold); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+          ${createIcon('graduationCap', { size: 24, color: 'var(--fbsu-gold)' })}
+        </div>
+        <div>
+          <div style="font-weight:900; font-size:1.05rem; color:var(--text-main);">${isAr ? 'دورة الرصيد الجامعي (Student Tuition Offset)' : 'Tuition Offset Flow'}</div>
+          <div style="font-size:0.82rem; color:var(--text-muted); margin-top:0.2rem;">
+            ${isAr
+              ? 'الشرح بـ 70 ر.س/ساعة ➔ تجميع 10 ساعات = 700 ر.س ➔ خصم مباشر وسداد فوري من رسوم الفصل الدراسي بالجامعة!'
+              : 'Teach for 70 SAR/hr ➔ 10 hrs = 700 SAR credited to University Balance ➔ Offsets tuition & parking!'
+            }
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:0.75rem;">
+        <button class="btn-gold" id="quick-pay-tuition-btn">
+          ${createIcon('wallet', { size: 16, color: '#0b1a17' })}
+          <span>${isAr ? 'سداد الرسوم الجامعية من رصيدك' : 'Pay Tuition From Balance'}</span>
+        </button>
+        <button class="btn-primary" id="open-create-session-btn">
+          ${createIcon('plus', { size: 16, color: '#ffffff' })}
+          <span>${isAr ? 'طرح جلسة شرح جديدة' : 'Post New Session'}</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Tutoring Hub Filter Toolbar -->
+    <div class="campus-hub-toolbar">
+      <div class="hub-filter-pills">
+        <button class="hub-filter-btn ${filter === 'all' ? 'active' : ''}" data-tutor-filter="all">
+          <span>${isAr ? 'جميع الشروحات الأكاديمية' : 'All Sessions'}</span>
+        </button>
+        <button class="hub-filter-btn ${filter === 'math' ? 'active' : ''}" data-tutor-filter="math">
+          <span>${isAr ? 'الرياضيات والهندسة (إياد الحربي)' : 'Math & Calculus'}</span>
+        </button>
+        <button class="hub-filter-btn ${filter === 'programming' ? 'active' : ''}" data-tutor-filter="programming">
+          <span>${isAr ? 'البرمجة وهياكل البيانات (راكان المطيري)' : 'Programming (Rakan)'}</span>
+        </button>
+        <button class="hub-filter-btn ${filter === 'hardware' ? 'active' : ''}" data-tutor-filter="hardware">
+          <span>${isAr ? 'التصميم المنطقي (Logic Design)' : 'Digital Logic Design'}</span>
+        </button>
+      </div>
+
+      <div style="font-size:0.82rem; color:var(--text-muted);">
+        ${isAr ? 'المستخدم الحالي الحاجز:' : 'Current User:'} <strong>${currentUser.name}</strong> (${currentUser.walletBalance.toFixed(2)} ر.س)
+      </div>
+    </div>
+
+    <!-- Tutoring Cards Grid -->
+    <div class="tutoring-grid">
+      ${sessions.map(s => `
+        <div class="tutoring-card">
+          <div>
+            <div class="tutoring-top-bar">
+              <span class="course-code-badge">
+                ${createIcon('award', { size: 13, color: 'var(--fbsu-primary)' })}
+                <span>${s.courseCode}</span>
+              </span>
+
+              <div class="tutor-rate-badge">
+                <span class="tutor-rate-num">${s.hourlyRate} ر.س</span>
+                <span class="tutor-rate-unit">${isAr ? 'للساعة الواحدة' : 'per hour'}</span>
+              </div>
+            </div>
+
+            <!-- Tutor Profile Info -->
+            <div class="tutor-profile-strip">
+              <div class="tutor-avatar-circle" style="background:${s.tutorAvatarColor};">
+                ${s.tutorName.charAt(0)}
+              </div>
+              <div class="tutor-info-meta">
+                <div class="tutor-title-row">
+                  <span class="tutor-name">${s.tutorName}</span>
+                  <span class="tutor-badge-tag">${isAr ? 'طالب متميز' : 'Honor Tutor'}</span>
+                </div>
+                <div class="tutor-college-text">${s.tutorRole}</div>
+                <div style="display:flex; align-items:center; gap:0.35rem; font-size:0.75rem; color:var(--fbsu-gold); margin-top:0.25rem;">
+                  <span>★ ${s.rating}</span>
+                  <span style="color:var(--text-dim);">(${s.reviewsCount} تقييم طالب)</span>
+                </div>
+              </div>
+            </div>
+
+            <h4 style="font-size:1.1rem; font-weight:800; color:var(--text-main); margin-bottom:0.65rem;">
+              ${s.courseName}
+            </h4>
+
+            <!-- Scope Box -->
+            <div class="tutoring-content-box">
+              <div class="lectures-scope-title">
+                ${createIcon('bookOpen', { size: 14, color: 'var(--fbsu-gold)' })}
+                <span>${s.coveredLectures}</span>
+              </div>
+              <div class="lectures-scope-desc">
+                ${s.coveredScope}
+              </div>
+            </div>
+
+            <!-- Meta details -->
+            <div class="tutoring-meta-row">
+              <div style="display:flex; align-items:center; gap:0.35rem;">
+                ${createIcon('clock', { size: 14, color: 'var(--text-dim)' })}
+                <span>${s.dateTime}</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:0.35rem;">
+                ${createIcon('mapPin', { size: 14, color: 'var(--text-dim)' })}
+                <span>${s.location}</span>
+              </div>
+            </div>
+
+            <!-- University Balance routing notice -->
+            <div class="wallet-routing-notice">
+              ${createIcon('shieldCheck', { size: 14, color: 'var(--fbsu-primary)' })}
+              <span>${isAr ? 'يتم تحويل ' + s.hourlyRate + ' ر.س كرصيد جامعي للطالب ' + s.tutorName.split(' ')[0] + ' لسداد رسوم جامعته.' : 'Payment converted to official university tuition credit.'}</span>
+            </div>
+          </div>
+
+          <!-- Action Button -->
+          <button class="btn-gold book-tutoring-btn" data-session-id="${s.id}" style="width:100%; justify-content:center; padding:0.85rem; font-size:0.9rem;">
+            ${createIcon('wallet', { size: 16, color: '#0b1a17' })}
+            <span>${isAr ? 'حجز الجلسة وسداد ' + s.hourlyRate + ' ر.س' : 'Book & Settle ' + s.hourlyRate + ' SAR'}</span>
+          </button>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+// ============================================================================
+// Tab 3: Faculty Office Hours Booking (حجز الساعات المكتبية للقيادات والدكاترة)
+// ============================================================================
+function renderOfficeHoursTab(isAr) {
+  const faculty = appState.facultyMembers;
+
+  return `
+    <div class="section-head">
+      <span class="section-eyebrow">
+        ${createIcon('userCheck', { size: 16, color: 'var(--fbsu-gold)' })}
+        <span>${isAr ? 'الساعات المكتبية والتواصل الأكاديمي' : 'Faculty Office Hours'}</span>
+      </span>
+      <h3 class="section-title">${isAr ? 'حجز الساعات المكتبية للعمداء ورؤساء الأقسام' : 'FBSU Academic Leadership & Faculty Office Hours'}</h3>
+      <p class="section-subtitle">
+        ${isAr
+          ? 'احجز موعداً مباشراً في الساعات المكتبية لرئيسة قسم كلية الحاسبات (د. رغد الرفيعي) أو عميد كلية الحاسب (د. محمد مزهر) لمناقشة مشروع التخرج أو استفسار مادة Logic Design. يرسل النظام إشعاراً فورياً للعميد أو رئيسة القسم بالموعد وتفاصيل الطالب!'
+          : 'Book an office hour slot with Chairperson Dr. Raghad Al-Rifaei or Dean Dr. Mohammad Mezher for project reviews or Logic Design questions with instant notifications!'
+        }
+      </p>
+    </div>
+
+    <!-- Direct Notification Alert Banner -->
+    <div class="direct-alert-banner">
+      ${createIcon('bell', { size: 18, color: 'var(--fbsu-gold)' })}
+      <div>
+        <strong>${isAr ? 'إشعار فوري مباشر:' : 'Instant Direct Notification:'}</strong>
+        ${isAr
+          ? ' فور تأكيد حجزك، يرسل النظام تنبيهاً مباشراً مع بيانات الطالب والموضوع إلى لوحة رئيسة القسم د. رغد الرفيعي أو العميد د. محمد مزهر.'
+          : ' Instant alert is dispatched to the Dean or Dept Chair dashboard upon booking confirmation.'
+        }
+      </div>
+    </div>
+
+    <!-- Faculty Cards Grid -->
+    <div class="faculty-grid">
+      ${faculty.map(f => `
+        <div class="faculty-card">
+          <div>
+            <div class="faculty-header-pod">
+              <div class="faculty-avatar-circle" style="background:${f.avatarColor};">
+                ${f.name.split(' ')[1] ? f.name.split(' ')[1].charAt(0) : 'د'}
+              </div>
+              <div class="faculty-meta-col">
+                <span class="faculty-rank-badge">${f.badge}</span>
+                <h4 class="faculty-name">${f.name}</h4>
+                <div style="font-size:0.8rem; color:var(--text-muted); font-weight:700; margin-bottom:0.25rem;">
+                  ${f.rank}
+                </div>
+                <div class="faculty-office-location">
+                  ${createIcon('mapPin', { size: 13, color: 'var(--fbsu-primary)' })}
+                  <span>${f.office}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Supervised courses -->
+            <div style="font-size:0.78rem; font-weight:800; color:var(--text-dim); margin-bottom:0.4rem;">
+              ${isAr ? 'المقررات والمجالات المتاحة للنقاش:' : 'Supervised Topics & Courses:'}
+            </div>
+            <div class="faculty-subjects-tag-list">
+              ${f.coursesSupervised.map(subj => `
+                <span class="faculty-subject-chip">${subj}</span>
+              `).join('')}
+            </div>
+
+            <!-- Slots container -->
+            <div class="slots-container-card">
+              <div class="slots-subhead">
+                <span>${isAr ? 'مواعيد الساعات المكتبية:' : 'Office Hours Available:'} ${f.daysText}</span>
+                <span style="color:var(--status-available); font-weight:800;">${f.nextAvailable}</span>
+              </div>
+
+              <div class="time-slots-picker-grid">
+                ${f.timeSlots.map((slot, sIdx) => `
+                  <button class="time-slot-btn ${slot.available ? '' : 'disabled'}" ${slot.available ? '' : 'disabled'} data-faculty-id="${f.id}" data-slot-time="${slot.time}">
+                    <div>${slot.time}</div>
+                    <div style="font-size:0.65rem; color:var(--text-dim); font-weight:600;">${slot.duration}</div>
+                  </button>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+
+          <!-- Booking trigger CTA -->
+          <button class="btn-primary open-faculty-booking-btn" data-faculty-id="${f.id}" style="width:100%; justify-content:center; padding:0.85rem; font-size:0.9rem;">
+            ${createIcon('calendar', { size: 16, color: '#ffffff' })}
+            <span>${isAr ? 'حجز موعد ساعة مكتبية مع ' + f.name.split(' ')[0] + ' ' + f.name.split(' ')[1] : 'Book Office Hour Slot'}</span>
+          </button>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+// ============================================================================
+// Tab 4: Study Rooms & Laboratories Hub (حجز القاعات والمعامل الطلابية)
+// ============================================================================
+function renderRoomsTab(isAr) {
+  const rooms = appState.studyRooms;
+
+  return `
+    <div class="section-head">
+      <span class="section-eyebrow">
+        ${createIcon('doorClosed', { size: 16, color: 'var(--fbsu-gold)' })}
+        <span>${isAr ? 'المعامل والقاعات الدراسية' : 'Study Rooms & Labs Hub'}</span>
+      </span>
+      <h3 class="section-title">${isAr ? 'حجز القاعات والمعامل الطلابية للعمل الجماعي' : 'FBSU Interactive Study Pods & Specialized Labs'}</h3>
+      <p class="section-subtitle">
+        ${isAr
+          ? 'مساحات عمل جماعية ومجهزة للطلاب لإنجاز المهام والتكاليف (Classwork, Assignment, Homework). يتم الحجز بوقت دقيق ومحدد (مثلاً من 09:00 ص إلى 09:20 ص) مع عداد تنازلي نشط لضمان إخلاء المعمل في الموعد المحدد!'
+          : 'Collaborative spaces for students to finish Classwork, Assignments & Homework with precise reservation windows (e.g. 09:00 to 09:20 AM) and live countdowns!'
+        }
+      </p>
+    </div>
+
+    <!-- Hub Header Action -->
+    <div class="campus-hub-toolbar">
+      <div style="display:flex; align-items:center; gap:0.75rem;">
+        <span class="pulse-dot-green"></span>
+        <span style="font-size:0.85rem; color:var(--text-main); font-weight:800;">
+          ${isAr ? 'معمل الحاسب 102 مشغول حالياً بجلسة عمل جماعي لـ (إياد وراكان وعبد العزيز)' : 'Computer Lab 102 actively in use by student study group'}
+        </span>
+      </div>
+
+      <button class="btn-primary" id="open-book-room-btn">
+        ${createIcon('plus', { size: 16, color: '#ffffff' })}
+        <span>${isAr ? 'حجز قاعة أو معمل لمجموعتك' : 'Reserve Room / Lab'}</span>
+      </button>
+    </div>
+
+    <!-- Rooms Grid -->
+    <div class="rooms-grid">
+      ${rooms.map(room => {
+        const isInUse = room.status === 'in-use';
+        const isReserved = room.status === 'reserved';
+
+        return `
+          <div class="room-card">
+            <div>
+              <div class="room-card-head">
+                <span class="room-badge-type">
+                  ${createIcon('monitor', { size: 13, color: 'var(--fbsu-primary)' })}
+                  <span>${room.typeBadge}</span>
+                </span>
+
+                <span class="badge ${isInUse ? 'badge-occ' : (isReserved ? 'badge-flex' : 'badge-avail')}">
+                  ${isInUse ? (isAr ? 'مشغول حالياً (جلسة نشطة)' : 'In Session') : (isReserved ? (isAr ? 'محجوز' : 'Reserved') : (isAr ? 'شاغر ومتاح الآن' : 'Available Now'))}
+                </span>
+              </div>
+
+              <h4 class="room-title">${room.name}</h4>
+              <div class="room-location-text">
+                ${createIcon('mapPin', { size: 13, color: 'var(--text-dim)' })}
+                <span>${room.building} • سعة: <strong>${room.capacity}</strong></span>
+              </div>
+
+              <!-- Active countdown for Lab 102 -->
+              ${isInUse && room.activeBooking ? `
+                <div class="room-active-timer-box">
+                  <div class="timer-header-flex">
+                    <span class="timer-team-label">${room.activeBooking.purpose}</span>
+                    <span class="countdown-digits" id="lab102-countdown-clock">09:00 - 09:20 (${appState.activeRoomCountdown} د متبقية)</span>
+                  </div>
+
+                  <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.35rem;">
+                    ${isAr ? 'المجموعة:' : 'Team:'} <strong>${room.activeBooking.teamMembers.join(' • ')}</strong>
+                  </div>
+
+                  <div class="timer-progress-track">
+                    <div class="timer-progress-fill" style="width:${(appState.activeRoomCountdown / 20) * 100}%;"></div>
+                  </div>
+
+                  <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.72rem; color:var(--text-dim);">
+                    <span>${isAr ? 'وقت الدخول: 09:00 ص' : 'Start: 09:00 AM'}</span>
+                    <span style="color:#f43f5e; font-weight:800;">${isAr ? 'موعد الخروج الإلزامي: 09:20 ص' : 'Exit: 09:20 AM'}</span>
+                  </div>
+                </div>
+              ` : ''}
+
+              ${!isInUse && !isReserved ? `
+                <div class="room-active-timer-box timer-available">
+                  <div class="timer-header-flex">
+                    <span class="timer-team-label" style="color:var(--status-available);">${isAr ? 'القاعة جاهزة للحجز الفوري' : 'Pod Ready For Immediate Use'}</span>
+                    <span class="countdown-digits avail">${isAr ? 'متاحة' : 'Open'}</span>
+                  </div>
+                  <div style="font-size:0.75rem; color:var(--text-muted);">
+                    ${isAr ? 'يمكنك حجزها الآن لأداء واجباتك مع زملائك وتحديد وقت الخروج بدقة.' : 'Book for teamwork with your peers with fixed departure time.'}
+                  </div>
+                </div>
+              ` : ''}
+
+              <!-- Specs List -->
+              <div style="font-size:0.76rem; font-weight:800; color:var(--text-dim); margin-bottom:0.4rem;">
+                ${isAr ? 'التجهيزات والتقنيات المتوفرة:' : 'Included Tech & Equipment:'}
+              </div>
+              <div class="room-specs-list">
+                ${room.specs.map(spec => `
+                  <div class="room-spec-item">
+                    ${createIcon('checkCircle2', { size: 13, color: 'var(--status-available)' })}
+                    <span>${spec}</span>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div style="display:flex; gap:0.5rem; margin-top:1rem;">
+              ${isInUse ? `
+                <button class="btn-outline extend-lab-time-btn" data-room-id="${room.id}" style="flex:1; justify-content:center; padding:0.75rem; font-size:0.8rem;">
+                  ${createIcon('clock', { size: 14 })}
+                  <span>${isAr ? 'تمديد 10 د' : '+10 Mins'}</span>
+                </button>
+                <button class="btn-primary release-lab-btn" data-room-id="${room.id}" style="flex:1; justify-content:center; padding:0.75rem; font-size:0.8rem; background:var(--status-available); border-color:var(--status-available);">
+                  ${createIcon('check', { size: 14 })}
+                  <span>${isAr ? 'إخلاء المعمل الآن' : 'Release Lab'}</span>
+                </button>
+              ` : `
+                <button class="btn-primary book-room-now-btn" data-room-id="${room.id}" style="width:100%; justify-content:center; padding:0.85rem; font-size:0.88rem;">
+                  ${createIcon('calendar', { size: 16, color: '#ffffff' })}
+                  <span>${isAr ? 'حجز هذه القاعة لمجموعتك' : 'Book Room for Your Team'}</span>
+                </button>
+              `}
+            </div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+  `;
+}
+
+// ============================================================================
 // Tab 6: AI Analytics & University Insights
 // ============================================================================
 function renderAnalyticsTab(isAr) {
@@ -1598,15 +2405,26 @@ function openAuthModal(initialTab = 'login') {
 
           <!-- Quick Demo Buttons -->
           <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:0.85rem; margin-bottom:1.25rem;">
-            <span style="font-size:0.75rem; color:var(--text-dim); display:block; margin-bottom:0.5rem;">دخول سريع بحسابات تجريبية:</span>
+            <span style="font-size:0.75rem; color:var(--text-dim); display:block; margin-bottom:0.5rem;">دخول سريع بحسابات المنظومة:</span>
+            <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.4rem; margin-bottom:0.4rem;">
+              <button class="zone-btn" style="text-align:center; padding:0.35rem 0.4rem; font-size:0.72rem;" id="quick-login-eyad">
+                إياد (ماث 720 ر.س)
+              </button>
+              <button class="zone-btn" style="text-align:center; padding:0.35rem 0.4rem; font-size:0.72rem;" id="quick-login-rakan">
+                راكان (برمجة)
+              </button>
+              <button class="zone-btn" style="text-align:center; padding:0.35rem 0.4rem; font-size:0.72rem;" id="quick-login-abdulaziz">
+                عبد العزيز (طالب)
+              </button>
+            </div>
             <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.4rem;">
-              <button class="zone-btn" style="text-align:center; padding:0.35rem 0.5rem; font-size:0.75rem;" id="quick-login-eyad">
-                إياد (هندسة)
+              <button class="zone-btn" style="text-align:center; padding:0.35rem 0.4rem; font-size:0.72rem;" id="quick-login-raghad">
+                د. رغد الرفيعي
               </button>
-              <button class="zone-btn" style="text-align:center; padding:0.35rem 0.5rem; font-size:0.75rem;" id="quick-login-rakan">
-                راكان (حاسب)
+              <button class="zone-btn" style="text-align:center; padding:0.35rem 0.4rem; font-size:0.72rem;" id="quick-login-mezher">
+                د. محمد مزهر
               </button>
-              <button class="zone-btn" style="text-align:center; padding:0.35rem 0.5rem; font-size:0.75rem;" id="quick-login-doctor">
+              <button class="zone-btn" style="text-align:center; padding:0.35rem 0.4rem; font-size:0.72rem;" id="quick-login-doctor">
                 د. الغامدي
               </button>
             </div>
@@ -1721,6 +2539,30 @@ function openAuthModal(initialTab = 'login') {
 
   document.getElementById('quick-login-rakan')?.addEventListener('click', () => {
     appState.currentUser = USERS.rakan;
+    appState.isLoggedIn = true;
+    soundFX.playSuccess();
+    closeModal();
+    renderApp();
+  });
+
+  document.getElementById('quick-login-abdulaziz')?.addEventListener('click', () => {
+    appState.currentUser = USERS.abdulaziz;
+    appState.isLoggedIn = true;
+    soundFX.playSuccess();
+    closeModal();
+    renderApp();
+  });
+
+  document.getElementById('quick-login-raghad')?.addEventListener('click', () => {
+    appState.currentUser = USERS.drRaghad;
+    appState.isLoggedIn = true;
+    soundFX.playSuccess();
+    closeModal();
+    renderApp();
+  });
+
+  document.getElementById('quick-login-mezher')?.addEventListener('click', () => {
+    appState.currentUser = USERS.drMezher;
     appState.isLoggedIn = true;
     soundFX.playSuccess();
     closeModal();
@@ -1951,63 +2793,145 @@ function openSpotModal(spot) {
   });
 }
 
+// ============================================================================
+// Toast Notification Engine
+// ============================================================================
+function showToast(title, message, iconName = 'bell') {
+  soundFX.playSuccess();
+  const existing = document.querySelector('.fbsu-toast-notification');
+  if (existing) existing.remove();
+
+  const toast = document.createElement('div');
+  toast.className = 'fbsu-toast-notification';
+  toast.innerHTML = `
+    <div style="width:36px; height:36px; border-radius:var(--radius-md); background:var(--fbsu-gold-light); color:var(--fbsu-gold); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+      ${createIcon(iconName, { size: 18, color: 'var(--fbsu-gold)' })}
+    </div>
+    <div style="flex:1;">
+      <div style="font-size:0.88rem; font-weight:800; color:var(--text-main); margin-bottom:0.2rem;">${title}</div>
+      <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.45;">${message}</div>
+    </div>
+  `;
+
+  document.body.appendChild(toast);
+  setTimeout(() => {
+    toast.style.transition = 'all 0.4s ease';
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(40px)';
+    setTimeout(() => toast.remove(), 400);
+  }, 4500);
+}
+
+// ============================================================================
+// Enhanced University Wallet & Tuition Settlement Modal
+// ============================================================================
 function openWalletModal() {
   soundFX.playClick();
   const user = appState.currentUser;
+  const isAr = appState.currentLang === 'ar';
   const modal = document.getElementById('modal-container');
   if (!modal) return;
 
+  const totalTuition = user.tuitionFeesTotal || 12000.00;
+  const paidTuition = user.tuitionFeesPaid || 4500.00;
+  const remainingTuition = Math.max(0, totalTuition - paidTuition);
+  const tuitionProgress = Math.min(100, Math.round((paidTuition / totalTuition) * 100));
+
   modal.innerHTML = `
     <div class="modal-overlay open" id="wallet-modal-backdrop">
-      <div class="modal-content-box" style="max-width:520px;">
+      <div class="modal-content-box" style="max-width:560px;">
         <button class="modal-close-btn" id="modal-close-x">
           ${createIcon('close', { size: 16 })}
         </button>
 
         <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1.5rem;">
-          <div style="width:40px; height:40px; border-radius:var(--radius-md); background:var(--fbsu-gold-light); color:var(--fbsu-gold); display:flex; align-items:center; justify-content:center;">
-            ${createIcon('wallet', { size: 20, color: 'var(--fbsu-gold)' })}
+          <div style="width:42px; height:42px; border-radius:var(--radius-md); background:var(--fbsu-gold-light); color:var(--fbsu-gold); display:flex; align-items:center; justify-content:center;">
+            ${createIcon('wallet', { size: 22, color: 'var(--fbsu-gold)' })}
           </div>
           <div>
-            <h3 style="font-size:1.35rem; font-weight:800; color:var(--text-main);">المحفظة الجامعية الذكية</h3>
-            <span style="font-size:0.8rem; color:var(--fbsu-primary);">جامعة فهد بن سلطان - نظام المدفوعات والمكافآت</span>
+            <h3 style="font-size:1.35rem; font-weight:800; color:var(--text-main);">${isAr ? 'المحفظة الجامعية والرصيد المعتمد' : 'FBSU Academic Wallet & Tuition Hub'}</h3>
+            <span style="font-size:0.8rem; color:var(--fbsu-primary);">${isAr ? 'جامعة فهد بن سلطان - رصيد الشروحات الطلابية والمواقف' : 'Official Tuition Settlement & Flex Balance'}</span>
           </div>
         </div>
 
         <!-- Balance Card -->
-        <div style="background:var(--fbsu-primary-light); border:1px solid var(--fbsu-gold-border); border-radius:var(--radius-lg); padding:1.75rem; margin-bottom:1.5rem;">
-          <span style="font-size:0.85rem; color:var(--text-muted);">الرصيد المتاح حالياً</span>
-          <div style="font-size:2.5rem; font-weight:900; color:var(--fbsu-gold); margin:0.35rem 0;">
-            ${user.walletBalance.toFixed(2)} ر.س
+        <div style="background:linear-gradient(135deg, rgba(17,110,99,0.25), rgba(215,162,55,0.18)); border:1px solid var(--fbsu-gold-border); border-radius:var(--radius-lg); padding:1.5rem; margin-bottom:1.25rem;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+            <div>
+              <span style="font-size:0.82rem; color:var(--text-muted);">${isAr ? 'الرصيد الجامعي المتاح حالياً' : 'Available University Balance'}</span>
+              <div style="font-size:2.4rem; font-weight:900; color:var(--fbsu-gold); margin:0.25rem 0;">
+                ${user.walletBalance.toFixed(2)} ر.س
+              </div>
+            </div>
+            <span class="badge badge-flex">${isAr ? 'معتمد أكاديمياً' : 'Verified'}</span>
           </div>
-          <div style="font-size:0.8rem; color:var(--text-main);">
-            المستفيد: <strong>${user.name}</strong> (${user.id})
+
+          <div style="font-size:0.82rem; color:var(--text-main); border-top:1px solid var(--border-subtle); padding-top:0.75rem; margin-top:0.5rem; display:flex; justify-content:space-between;">
+            <span>${isAr ? 'المستفيد:' : 'Beneficiary:'} <strong>${user.name}</strong> (${user.id})</span>
+            <span style="color:var(--text-muted);">${user.role.split('-')[0]}</span>
           </div>
         </div>
 
-        <h5 style="color:var(--text-main); font-weight:800; margin-bottom:0.75rem;">سجل العمليات الأخيرة:</h5>
-        <div style="display:flex; flex-direction:column; gap:0.6rem; margin-bottom:1.5rem;">
-          <div style="background:rgba(255,255,255,0.03); padding:0.75rem 1rem; border-radius:var(--radius-md); display:flex; justify-content:space-between; align-items:center; font-size:0.85rem;">
+        <!-- Tuition Offset Progress Box -->
+        <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:1rem 1.15rem; margin-bottom:1.25rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.4rem;">
+            <div style="font-size:0.85rem; font-weight:800; color:var(--text-main);">
+              ${isAr ? 'سداد الرسوم الدراسية للفصل الحالي' : 'Term Tuition Fee Offset Progress'}
+            </div>
+            <span style="font-size:0.8rem; font-weight:800; color:var(--status-available);">${tuitionProgress}% ${isAr ? 'مسدد' : 'Paid'}</span>
+          </div>
+
+          <div class="timer-progress-track">
+            <div class="timer-progress-fill" style="width:${tuitionProgress}%; background:linear-gradient(90deg, var(--fbsu-primary), var(--fbsu-gold));"></div>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.76rem; color:var(--text-dim); margin-top:0.4rem;">
+            <span>${isAr ? 'المدفوع:' : 'Paid:'} ${paidTuition.toFixed(2)} ر.س</span>
+            <span>${isAr ? 'المتبقي:' : 'Remaining:'} <strong style="color:#f43f5e;">${remainingTuition.toFixed(2)} ر.س</strong></span>
+            <span>${isAr ? 'الإجمالي:' : 'Total:'} ${totalTuition.toFixed(2)} ر.س</span>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div style="display:flex; gap:0.65rem; margin-bottom:1.25rem;">
+          <button class="btn-gold" style="flex:1.4; justify-content:center; padding:0.85rem;" id="modal-pay-tuition-btn">
+            ${createIcon('graduationCap', { size: 16, color: '#0b1a17' })}
+            <span>${isAr ? 'سداد الرسوم الدراسية من الرصيد' : 'Pay Tuition From Balance'}</span>
+          </button>
+          <button class="btn-outline" style="flex:1; justify-content:center; padding:0.85rem;" id="add-wallet-funds-btn">
+            ${createIcon('plus', { size: 16 })}
+            <span>${isAr ? 'شحن رصيد (+50)' : 'Top Up (+50)'}</span>
+          </button>
+        </div>
+
+        <h5 style="color:var(--text-main); font-weight:800; margin-bottom:0.65rem; font-size:0.9rem;">
+          ${isAr ? 'سجل العمليات الأكاديمية والمكافآت:' : 'Academic Transaction History:'}
+        </h5>
+
+        <div style="display:flex; flex-direction:column; gap:0.5rem; max-height:190px; overflow-y:auto; padding-right:0.25rem;">
+          <div style="background:rgba(255,255,255,0.03); padding:0.65rem 0.85rem; border-radius:var(--radius-md); display:flex; justify-content:space-between; align-items:center; font-size:0.82rem;">
+            <div>
+              <strong style="color:var(--status-available);">+ 70.00 ر.س</strong>
+              <div style="font-size:0.74rem; color:var(--text-muted);">${isAr ? 'عوائد شرح الأقران (MATH 101 - حجز راكان)' : 'Peer Tutoring (MATH 101)'}</div>
+            </div>
+            <span style="font-size:0.72rem; color:var(--text-dim);">${isAr ? 'اليوم 11:30 ص' : 'Today'}</span>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.03); padding:0.65rem 0.85rem; border-radius:var(--radius-md); display:flex; justify-content:space-between; align-items:center; font-size:0.82rem;">
             <div>
               <strong style="color:var(--status-available);">+ 17.25 ر.س</strong>
-              <div style="font-size:0.75rem; color:var(--text-muted);">مكافأة تبادل ذكي (بريك إياد - موقف #01)</div>
+              <div style="font-size:0.74rem; color:var(--text-muted);">${isAr ? 'مكافأة تبادل ذكي (بريك إياد - موقف #01)' : 'AI Parking Flex Reward'}</div>
             </div>
-            <span style="font-size:0.75rem; color:var(--text-dim);">اليوم 10:05 ص</span>
+            <span style="font-size:0.72rem; color:var(--text-dim);">${isAr ? 'اليوم 10:05 ص' : 'Today'}</span>
           </div>
-          <div style="background:rgba(255,255,255,0.03); padding:0.75rem 1rem; border-radius:var(--radius-md); display:flex; justify-content:space-between; align-items:center; font-size:0.85rem;">
-            <div>
-              <strong style="color:var(--status-occupied);">- 11.50 ر.س</strong>
-              <div style="font-size:0.75rem; color:var(--text-muted);">حجز موقف ساعتين (كلية الهندسة)</div>
-            </div>
-            <span style="font-size:0.75rem; color:var(--text-dim);">أمس 08:30 ص</span>
-          </div>
-        </div>
 
-        <div style="display:flex; gap:0.75rem;">
-          <button class="btn-gold" style="flex:1; justify-content:center;" id="add-wallet-funds-btn">
-            ${createIcon('wallet', { size: 16, color: '#0b1a17' })}
-            <span>شحن المحفظة (مدى / Apple Pay)</span>
-          </button>
+          <div style="background:rgba(255,255,255,0.03); padding:0.65rem 0.85rem; border-radius:var(--radius-md); display:flex; justify-content:space-between; align-items:center; font-size:0.82rem;">
+            <div>
+              <strong style="color:#f43f5e;">- 500.00 ر.س</strong>
+              <div style="font-size:0.74rem; color:var(--text-muted);">${isAr ? 'سداد دفعة رسوم دراسية (جامعة فهد بن سلطان)' : 'Tuition Payment'}</div>
+            </div>
+            <span style="font-size:0.72rem; color:var(--text-dim);">${isAr ? 'أمس 02:15 م' : 'Yesterday'}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -2017,11 +2941,710 @@ function openWalletModal() {
   document.getElementById('wallet-modal-backdrop')?.addEventListener('click', (e) => {
     if (e.target.id === 'wallet-modal-backdrop') closeModal();
   });
+
+  document.getElementById('modal-pay-tuition-btn')?.addEventListener('click', () => {
+    closeModal();
+    openTuitionPaymentModal();
+  });
+
   document.getElementById('add-wallet-funds-btn')?.addEventListener('click', () => {
     user.walletBalance += 50.00;
     soundFX.playSuccess();
+    showToast('تم شحن المحفظة', 'تمت إضافة 50.00 ر.س إلى رصيدك الجامعي بنجاح.', 'wallet');
     closeModal();
     renderApp();
+  });
+}
+
+// ============================================================================
+// Tuition Payment & Official Receipt Modal
+// ============================================================================
+function openTuitionPaymentModal() {
+  soundFX.playClick();
+  const user = appState.currentUser;
+  const isAr = appState.currentLang === 'ar';
+  const modal = document.getElementById('modal-container');
+  if (!modal) return;
+
+  const totalTuition = user.tuitionFeesTotal || 12000.00;
+  const paidTuition = user.tuitionFeesPaid || 4500.00;
+  const remainingTuition = Math.max(0, totalTuition - paidTuition);
+
+  modal.innerHTML = `
+    <div class="modal-overlay open" id="tuition-modal-backdrop">
+      <div class="modal-content-box" style="max-width:540px;">
+        <button class="modal-close-btn" id="modal-close-x">
+          ${createIcon('close', { size: 16 })}
+        </button>
+
+        <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1.25rem;">
+          <img src="./assets/branding/fbsu-logo.png" style="height:44px;" alt="FBSU" />
+          <div>
+            <h3 style="font-size:1.25rem; font-weight:800; color:var(--text-main);">${isAr ? 'سداد الرسوم الجامعية بالرصيد المكتسب' : 'Tuition Settlement via Earned Credits'}</h3>
+            <span style="font-size:0.78rem; color:var(--fbsu-primary);">${isAr ? 'عمادة القبول والتسجيل - جامعة فهد بن سلطان' : 'Deanship of Admissions & Registration'}</span>
+          </div>
+        </div>
+
+        <div style="background:var(--fbsu-primary-light); border:1px solid var(--fbsu-gold-border); border-radius:var(--radius-lg); padding:1.25rem; margin-bottom:1.25rem;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem; font-size:0.85rem;">
+            <span style="color:var(--text-muted);">${isAr ? 'رصيد محفظتك المتاح:' : 'Available Balance:'}</span>
+            <strong style="color:var(--fbsu-gold); font-size:1.15rem;">${user.walletBalance.toFixed(2)} ر.س</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:0.85rem;">
+            <span style="color:var(--text-muted);">${isAr ? 'المتبقي من رسوم الفصل:' : 'Remaining Tuition:'}</span>
+            <strong style="color:#f43f5e; font-size:1.15rem;">${remainingTuition.toFixed(2)} ر.س</strong>
+          </div>
+        </div>
+
+        <!-- Presets -->
+        <label class="form-label">${isAr ? 'حدد المبلغ المراد سداده من رصيدك الجامعي:' : 'Choose Payment Amount:'}</label>
+        <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:0.5rem; margin-bottom:1.25rem;">
+          <button class="pattern-option tuition-preset-btn" data-amt="70">70 ر.س</button>
+          <button class="pattern-option tuition-preset-btn" data-amt="140">140 ر.س</button>
+          <button class="pattern-option tuition-preset-btn selected" data-amt="350">350 ر.س</button>
+          <button class="pattern-option tuition-preset-btn" data-amt="${Math.min(user.walletBalance, remainingTuition)}">${isAr ? 'كامل الرصيد' : 'Full'}</button>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">${isAr ? 'المبلغ المحدد للسداد (ر.س):' : 'Amount to Offset (SAR):'}</label>
+          <input type="number" id="tuition-pay-input" class="form-control" value="350" min="10" max="${user.walletBalance}" />
+        </div>
+
+        <div class="wallet-routing-notice" style="margin-bottom:1.5rem;">
+          ${createIcon('checkCircle2', { size: 16, color: 'var(--status-available)' })}
+          <span>${isAr ? 'سيتم خصم المبلغ فوراً من محفظتك وتحديث سجلك الأكاديمي مع إصدار سند قبض جامعي رسمي.' : 'Directly updates your academic ledger with official receipt.'}</span>
+        </div>
+
+        <button class="btn-gold" id="confirm-tuition-settle-btn" style="width:100%; justify-content:center; padding:0.95rem; font-size:0.95rem;">
+          ${createIcon('shieldCheck', { size: 18, color: '#0b1a17' })}
+          <span>${isAr ? 'تأكيد سداد الرسوم الجامعية وإصدار السند' : 'Confirm Tuition Settlement'}</span>
+        </button>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('modal-close-x')?.addEventListener('click', closeModal);
+  document.getElementById('tuition-modal-backdrop')?.addEventListener('click', (e) => {
+    if (e.target.id === 'tuition-modal-backdrop') closeModal();
+  });
+
+  document.querySelectorAll('.tuition-preset-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      soundFX.playClick();
+      document.querySelectorAll('.tuition-preset-btn').forEach(b => b.classList.remove('selected'));
+      e.currentTarget.classList.add('selected');
+      const amt = e.currentTarget.getAttribute('data-amt');
+      const input = document.getElementById('tuition-pay-input');
+      if (input) input.value = amt;
+    });
+  });
+
+  document.getElementById('confirm-tuition-settle-btn')?.addEventListener('click', () => {
+    const input = document.getElementById('tuition-pay-input');
+    const amt = parseFloat(input?.value || '0');
+    if (amt <= 0 || amt > user.walletBalance) {
+      alert(isAr ? 'عفواً، رصيدك غير كافٍ لسداد هذا المبلغ!' : 'Insufficient wallet balance!');
+      return;
+    }
+
+    user.walletBalance -= amt;
+    user.tuitionFeesPaid = (user.tuitionFeesPaid || 0) + amt;
+    soundFX.playSuccess();
+    confetti({ particleCount: 120, spread: 80, origin: { y: 0.5 } });
+
+    // Show Official Receipt
+    modal.innerHTML = `
+      <div class="modal-overlay open" id="tuition-receipt-backdrop">
+        <div class="modal-content-box" style="max-width:560px;">
+          <button class="modal-close-btn" id="modal-close-x">
+            ${createIcon('close', { size: 16 })}
+          </button>
+
+          <div class="tuition-receipt-card">
+            <div class="tuition-receipt-header">
+              <div style="display:flex; align-items:center; gap:0.75rem;">
+                <img src="./assets/branding/fbsu-logo.png" style="height:48px;" alt="FBSU" />
+                <div>
+                  <h4 style="font-size:1.15rem; font-weight:900; color:#116E63; margin-bottom:0.15rem;">جامعة فهد بن سلطان</h4>
+                  <div style="font-size:0.75rem; color:#64748b;">سند قبض رسوم دراسية إلكتروني معتمد</div>
+                </div>
+              </div>
+              <div class="tuition-stamp-seal">
+                معتمد رسمياً<br>FBSU PAID
+              </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.85rem; font-size:0.82rem; margin-bottom:1.5rem;">
+              <div>
+                <span style="color:#64748b; display:block;">اسم الطالب:</span>
+                <strong>${user.name}</strong>
+              </div>
+              <div>
+                <span style="color:#64748b; display:block;">الرقم الأكاديمي:</span>
+                <strong>${user.id}</strong>
+              </div>
+              <div>
+                <span style="color:#64748b; display:block;">الكلية والتخصص:</span>
+                <strong>${user.college || user.role}</strong>
+              </div>
+              <div>
+                <span style="color:#64748b; display:block;">مصدر السداد:</span>
+                <strong style="color:#116E63;">رصيد الشروحات الطلابية والمواقف</strong>
+              </div>
+            </div>
+
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:var(--radius-md); padding:1rem; margin-bottom:1.25rem;">
+              <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:0.4rem;">
+                <span style="color:#64748b;">المبلغ المسدد:</span>
+                <strong style="font-size:1.3rem; color:#116E63;">${amt.toFixed(2)} ر.س</strong>
+              </div>
+              <div style="display:flex; justify-content:space-between; font-size:0.78rem; color:#64748b;">
+                <span>رقم العملية:</span>
+                <span>FBSU-TXN-2026-${Math.floor(100000 + Math.random() * 900000)}</span>
+              </div>
+            </div>
+
+            <button class="btn-primary" id="close-receipt-btn" style="width:100%; justify-content:center; padding:0.85rem;">
+              ${createIcon('check', { size: 16, color: '#ffffff' })}
+              <span>إغلاق وحفظ السند في السجل</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    document.getElementById('modal-close-x')?.addEventListener('click', () => { closeModal(); renderApp(); });
+    document.getElementById('close-receipt-btn')?.addEventListener('click', () => { closeModal(); renderApp(); });
+    showToast('تم سداد الرسوم بنجاح', `تم خصم ${amt.toFixed(2)} ر.س من رصيدك وسدادها للرسوم الجامعية.`, 'graduationCap');
+  });
+}
+
+// ============================================================================
+// Direct Campus Notifications Drawer
+// ============================================================================
+function openNotificationsModal() {
+  soundFX.playClick();
+  const isAr = appState.currentLang === 'ar';
+  const modal = document.getElementById('modal-container');
+  if (!modal) return;
+
+  const notifs = appState.notifications;
+
+  modal.innerHTML = `
+    <div class="modal-overlay open" id="notif-modal-backdrop">
+      <div class="modal-content-box" style="max-width:540px;">
+        <button class="modal-close-btn" id="modal-close-x">
+          ${createIcon('close', { size: 16 })}
+        </button>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; padding-bottom:0.75rem; border-bottom:1px solid var(--border-subtle);">
+          <div style="display:flex; align-items:center; gap:0.65rem;">
+            <div style="width:38px; height:38px; border-radius:var(--radius-md); background:var(--fbsu-gold-light); color:var(--fbsu-gold); display:flex; align-items:center; justify-content:center;">
+              ${createIcon('bell', { size: 20, color: 'var(--fbsu-gold)' })}
+            </div>
+            <div>
+              <h3 style="font-size:1.2rem; font-weight:800; color:var(--text-main);">${isAr ? 'صندوق الإشعارات المباشرة' : 'Direct Campus Alerts'}</h3>
+              <span style="font-size:0.76rem; color:var(--text-muted);">${isAr ? 'إشعارات حجز الساعات المكتبية والشروحات والقاعات' : 'Faculty & Student Alerts'}</span>
+            </div>
+          </div>
+          <button class="btn-outline" id="mark-all-read-btn" style="padding:0.35rem 0.75rem; font-size:0.75rem;">
+            ${isAr ? 'تحديد الكل كمقروء' : 'Mark all read'}
+          </button>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:0.75rem; max-height:380px; overflow-y:auto;">
+          ${notifs.map(n => `
+            <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-subtle); border-radius:var(--radius-lg); padding:1rem; display:flex; gap:0.85rem; align-items:flex-start;">
+              <div style="width:36px; height:36px; border-radius:var(--radius-md); background:var(--fbsu-primary-light); color:var(--fbsu-primary); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                ${createIcon(n.icon || 'bell', { size: 18, color: 'var(--fbsu-primary)' })}
+              </div>
+              <div style="flex:1;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.25rem;">
+                  <strong style="font-size:0.88rem; color:var(--text-main);">${n.title}</strong>
+                  <span class="badge badge-avail" style="font-size:0.65rem;">${n.badge || 'جديد'}</span>
+                </div>
+                <p style="font-size:0.78rem; color:var(--text-muted); line-height:1.45; margin-bottom:0.4rem;">
+                  ${n.message}
+                </p>
+                <div style="display:flex; justify-content:space-between; font-size:0.72rem; color:var(--text-dim);">
+                  <span>${isAr ? 'المُرسل:' : 'From:'} <strong>${n.sender}</strong></span>
+                  <span>${n.time}</span>
+                </div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('modal-close-x')?.addEventListener('click', closeModal);
+  document.getElementById('notif-modal-backdrop')?.addEventListener('click', (e) => {
+    if (e.target.id === 'notif-modal-backdrop') closeModal();
+  });
+
+  document.getElementById('mark-all-read-btn')?.addEventListener('click', () => {
+    appState.notifications.forEach(n => n.read = true);
+    soundFX.playClick();
+    closeModal();
+    renderApp();
+  });
+}
+
+// ============================================================================
+// Book Peer Tutoring Session Modal (خصم 70 ر.س وإضافتها لرصيد الشارح)
+// ============================================================================
+function openBookTutoringModal(sessionId) {
+  soundFX.playClick();
+  const session = appState.tutoringSessions.find(s => s.id === sessionId);
+  if (!session) return;
+  const currentUser = appState.currentUser;
+  const isAr = appState.currentLang === 'ar';
+  const modal = document.getElementById('modal-container');
+  if (!modal) return;
+
+  modal.innerHTML = `
+    <div class="modal-overlay open" id="tutoring-book-backdrop">
+      <div class="modal-content-box" style="max-width:540px;">
+        <button class="modal-close-btn" id="modal-close-x">
+          ${createIcon('close', { size: 16 })}
+        </button>
+
+        <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1.25rem;">
+          <div style="width:42px; height:42px; border-radius:var(--radius-md); background:${session.tutorAvatarColor}; color:#ffffff; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:1.2rem;">
+            ${session.tutorName.charAt(0)}
+          </div>
+          <div>
+            <h3 style="font-size:1.25rem; font-weight:800; color:var(--text-main);">${isAr ? 'تأكيد حجز جلسة الشرح الأكاديمي' : 'Confirm Tutoring Session'}</h3>
+            <span style="font-size:0.78rem; color:var(--fbsu-primary);">${session.courseCode} • ${session.tutorName}</span>
+          </div>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-subtle); border-radius:var(--radius-lg); padding:1.25rem; margin-bottom:1.25rem;">
+          <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:0.25rem;">${isAr ? 'المحتوى التعليمي المشروح:' : 'Covered Scope:'}</div>
+          <div style="font-size:0.95rem; font-weight:800; color:var(--fbsu-gold); margin-bottom:0.6rem;">${session.coveredLectures}</div>
+          <div style="font-size:0.8rem; color:var(--text-muted); line-height:1.5;">${session.coveredScope}</div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin-bottom:1.25rem; font-size:0.82rem;">
+          <div style="background:rgba(255,255,255,0.02); padding:0.75rem; border-radius:var(--radius-md); border:1px solid var(--border-subtle);">
+            <span style="color:var(--text-dim); display:block;">${isAr ? 'الموعد والمكان:' : 'Time & Venue:'}</span>
+            <strong style="color:var(--text-main);">${session.dateTime} (${session.location})</strong>
+          </div>
+          <div style="background:rgba(255,255,255,0.02); padding:0.75rem; border-radius:var(--radius-md); border:1px solid var(--border-subtle);">
+            <span style="color:var(--text-dim); display:block;">${isAr ? 'التكلفة الإجمالية:' : 'Total Cost:'}</span>
+            <strong style="color:var(--fbsu-gold); font-size:1.15rem;">${session.hourlyRate} ر.س</strong>
+          </div>
+        </div>
+
+        <!-- Student Economy Principle Note -->
+        <div class="wallet-routing-notice" style="margin-bottom:1.5rem;">
+          ${createIcon('wallet', { size: 18, color: 'var(--fbsu-gold)' })}
+          <div>
+            <strong>${isAr ? 'التحويل المالي المباشر إلى رصيد الجامعة:' : 'Direct University Balance Routing:'}</strong>
+            ${isAr
+              ? ' سيتم خصم ' + session.hourlyRate + ' ر.س من محفظتك وإيداعها مباشرة في رصيد الجامعة للطالب ' + session.tutorName + ' ليستخدمها في سداد رسومه الجامعية ومواقفه.'
+              : ' Converted into University balance for the student tutor to pay tuition & parking.'
+            }
+          </div>
+        </div>
+
+        <button class="btn-gold" id="confirm-tutoring-pay-btn" style="width:100%; justify-content:center; padding:0.95rem; font-size:0.95rem;">
+          ${createIcon('checkCircle2', { size: 18, color: '#0b1a17' })}
+          <span>${isAr ? 'تأكيد الحجز وسداد ' + session.hourlyRate + ' ر.س' : 'Confirm & Settle ' + session.hourlyRate + ' SAR'}</span>
+        </button>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('modal-close-x')?.addEventListener('click', closeModal);
+  document.getElementById('tutoring-book-backdrop')?.addEventListener('click', (e) => {
+    if (e.target.id === 'tutoring-book-backdrop') closeModal();
+  });
+
+  document.getElementById('confirm-tutoring-pay-btn')?.addEventListener('click', () => {
+    if (currentUser.walletBalance < session.hourlyRate) {
+      alert(isAr ? 'عفواً، رصيدك غير كافٍ. يرجى شحن المحفظة أولاً!' : 'Insufficient wallet balance! Please top up.');
+      return;
+    }
+
+    // Deduct from buyer
+    currentUser.walletBalance -= session.hourlyRate;
+
+    // Credit to tutor's university balance!
+    const tutorUser = USERS[session.tutorId];
+    if (tutorUser) {
+      tutorUser.walletBalance += session.hourlyRate;
+    }
+
+    // Add alert notification
+    appState.notifications.unshift({
+      id: 'notif-' + Date.now(),
+      target: session.tutorId,
+      targetName: session.tutorName,
+      sender: `${currentUser.name} (${currentUser.id})`,
+      title: `حجز جديد لجلسة الشرح (${session.courseCode})`,
+      message: `قام الطالب ${currentUser.name} بحجز جلسة الشرح (${session.coveredLectures}). تم إيداع ${session.hourlyRate}.00 ر.س كرصيد جامعي معتمد في محفظتك.`,
+      time: 'الآن',
+      read: false,
+      icon: 'wallet',
+      badge: '+70 ر.س'
+    });
+
+    soundFX.playSuccess();
+    confetti({ particleCount: 100, spread: 70, origin: { y: 0.5 } });
+
+    closeModal();
+    renderApp();
+    showToast('تم تأكيد حجز الجلسة', `تم تحويل ${session.hourlyRate} ر.س إلى رصيد الجامعة للطالب ${session.tutorName.split(' ')[0]} بنجاح!`, 'award');
+  });
+}
+
+// ============================================================================
+// Post New Peer Tutoring Session Modal
+// ============================================================================
+function openCreateTutoringModal() {
+  soundFX.playClick();
+  const currentUser = appState.currentUser;
+  const isAr = appState.currentLang === 'ar';
+  const modal = document.getElementById('modal-container');
+  if (!modal) return;
+
+  modal.innerHTML = `
+    <div class="modal-overlay open" id="create-tutoring-backdrop">
+      <div class="modal-content-box" style="max-width:540px;">
+        <button class="modal-close-btn" id="modal-close-x">
+          ${createIcon('close', { size: 16 })}
+        </button>
+
+        <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1.5rem;">
+          <div style="width:40px; height:40px; border-radius:var(--radius-md); background:var(--fbsu-primary-light); color:var(--fbsu-primary); display:flex; align-items:center; justify-content:center;">
+            ${createIcon('bookOpen', { size: 20, color: 'var(--fbsu-primary)' })}
+          </div>
+          <div>
+            <h3 style="font-size:1.25rem; font-weight:800; color:var(--text-main);">${isAr ? 'طرح جلسة شرح أو نشاط طلابي' : 'Post Peer Tutoring Session'}</h3>
+            <span style="font-size:0.78rem; color:var(--text-muted);">${isAr ? 'المقدم: ' + currentUser.name + ' (' + currentUser.role + ')' : currentUser.name}</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">${isAr ? 'رمز واسم المادة الدراسية:' : 'Course Code & Name:'}</label>
+          <input type="text" id="new-tutor-course" class="form-control" placeholder="مثال: MATH 101 - حساب التفاضل والتكامل" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">${isAr ? 'المحاضرات أو الشابتر المشروح:' : 'Covered Lectures / Scope:'}</label>
+          <input type="text" id="new-tutor-lectures" class="form-control" placeholder="مثال: المحاضرات 1 إلى 4 (Lectures 1, 2, 3, 4)" value="المحاضرات 1 إلى 4 (Lectures 1, 2, 3, 4)" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">${isAr ? 'تفاصيل المحتوى والمخرجات:' : 'Detailed Topics:'}</label>
+          <textarea id="new-tutor-desc" class="form-control" rows="2" placeholder="شرح تفصيلي للمفاهيم وحل أسئلة الواجبات والاختبارات السابقة"></textarea>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
+          <div class="form-group">
+            <label class="form-label">${isAr ? 'سعر الساعة (ر.س):' : 'Hourly Rate (SAR):'}</label>
+            <input type="number" id="new-tutor-rate" class="form-control" value="70" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">${isAr ? 'مكان الجلسة:' : 'Location:'}</label>
+            <select id="new-tutor-loc" class="form-control">
+              <option value="معمل الحاسب 102">معمل الحاسب 102</option>
+              <option value="قاعة المذاكرة الذكية A-04">قاعة المذاكرة الذكية A-04</option>
+              <option value="معمل التصميم المنطقي Lab 205">معمل التصميم المنطقي Lab 205</option>
+              <option value="جلسة تفاعلية أونلاين">جلسة تفاعلية أونلاين</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="wallet-routing-notice" style="margin-bottom:1.5rem;">
+          ${createIcon('graduationCap', { size: 16, color: 'var(--fbsu-primary)' })}
+          <span>${isAr ? 'جميع العوائد المالية ستتحول تلقائياً كرصيد جامعي في محفظتك تستفيد منه في سداد الرسوم الدراسية واشتراكات المواقف.' : 'Earnings route to your official tuition credit.'}</span>
+        </div>
+
+        <button class="btn-primary" id="submit-new-tutoring-btn" style="width:100%; justify-content:center; padding:0.95rem; font-size:0.95rem;">
+          ${createIcon('plus', { size: 16, color: '#ffffff' })}
+          <span>${isAr ? 'نشر الجلسة وإتاحتها للطلاب' : 'Publish Tutoring Session'}</span>
+        </button>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('modal-close-x')?.addEventListener('click', closeModal);
+  document.getElementById('create-tutoring-backdrop')?.addEventListener('click', (e) => {
+    if (e.target.id === 'create-tutoring-backdrop') closeModal();
+  });
+
+  document.getElementById('submit-new-tutoring-btn')?.addEventListener('click', () => {
+    const course = document.getElementById('new-tutor-course')?.value || 'MATH 201';
+    const lectures = document.getElementById('new-tutor-lectures')?.value || 'المحاضرات 1 إلى 4';
+    const desc = document.getElementById('new-tutor-desc')?.value || 'شرح وحل التكاليف المعتمدة';
+    const rate = parseFloat(document.getElementById('new-tutor-rate')?.value || '70');
+    const loc = document.getElementById('new-tutor-loc')?.value || 'قاعة المذاكرة A-04';
+
+    appState.tutoringSessions.unshift({
+      id: 'TUT-' + Date.now(),
+      tutorId: currentUser.id === USERS.eyad.id ? 'eyad' : 'rakan',
+      tutorName: currentUser.name,
+      tutorRole: currentUser.role,
+      tutorAvatarColor: currentUser.avatarColor || '#116E63',
+      courseCode: course.split('-')[0].trim() || 'ACAD 101',
+      courseName: course,
+      courseNameEn: 'Peer Tutoring Session',
+      coveredLectures: lectures,
+      coveredScope: desc,
+      hourlyRate: rate,
+      durationHours: 1,
+      totalPrice: rate,
+      dateTime: 'اليوم - 05:00 م',
+      location: loc,
+      category: 'math',
+      rating: 5.0,
+      reviewsCount: 1,
+      status: 'open',
+      enrolledStudents: []
+    });
+
+    soundFX.playSuccess();
+    closeModal();
+    renderApp();
+    showToast('تم طرح الجلسة بنجاح', `تمت إتاحة جلسة (${course}) بسعر ${rate} ر.س/ساعة.`, 'bookOpen');
+  });
+}
+
+// ============================================================================
+// Book Faculty Office Hours Modal (إشعار فوري وتأكيد الحجز للدكتور)
+// ============================================================================
+function openBookOfficeHoursModal(facultyId, initialSlotTime = '11:15 ص') {
+  soundFX.playClick();
+  const f = appState.facultyMembers.find(m => m.id === facultyId) || appState.facultyMembers[0];
+  const currentUser = appState.currentUser;
+  const isAr = appState.currentLang === 'ar';
+  const modal = document.getElementById('modal-container');
+  if (!modal) return;
+
+  modal.innerHTML = `
+    <div class="modal-overlay open" id="faculty-book-backdrop">
+      <div class="modal-content-box" style="max-width:540px;">
+        <button class="modal-close-btn" id="modal-close-x">
+          ${createIcon('close', { size: 16 })}
+        </button>
+
+        <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1.25rem;">
+          <div class="faculty-avatar-circle" style="background:${f.avatarColor}; width:48px; height:48px; font-size:1.1rem;">
+            ${f.name.split(' ')[1] ? f.name.split(' ')[1].charAt(0) : 'د'}
+          </div>
+          <div>
+            <h3 style="font-size:1.25rem; font-weight:800; color:var(--text-main);">${f.name}</h3>
+            <span style="font-size:0.78rem; color:var(--fbsu-primary);">${f.rank}</span>
+          </div>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-subtle); border-radius:var(--radius-lg); padding:1rem; margin-bottom:1.25rem;">
+          <div style="font-size:0.8rem; color:var(--text-dim); margin-bottom:0.25rem;">${isAr ? 'مكتب المقابلة والموقع الأكاديمي:' : 'Office Location:'}</div>
+          <div style="font-size:0.95rem; font-weight:800; color:var(--text-main);">${f.office}</div>
+          <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.25rem;">${f.daysText}</div>
+        </div>
+
+        <!-- Topic selection -->
+        <div class="form-group">
+          <label class="form-label">${isAr ? 'موضوع المقابلة والاستشارة الأكاديمية:' : 'Discussion Topic:'}</label>
+          <select id="faculty-topic-select" class="form-control">
+            <option value="استفسار ومناقشة مشروع مادة Logic Design (التصميم المنطقي)">استفسار ومناقشة مشروع مادة Logic Design (التصميم المنطقي)</option>
+            <option value="مناقشة فكرة مشروع التخرج النهائي (Senior Capstone Project)">مناقشة فكرة مشروع التخرج النهائي (Senior Capstone Project)</option>
+            <option value="مراجعة الكلاس وورك والتكليف الفصلي">مراجعة الكلاس وورك والتكليف الفصلي</option>
+            <option value="الإرشاد الأكاديمي ومعادلة المواد">الإرشاد الأكاديمي ومعادلة المواد</option>
+          </select>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin-bottom:1.25rem;">
+          <div class="form-group">
+            <label class="form-label">${isAr ? 'مدة المقابلة:' : 'Duration:'}</label>
+            <select id="faculty-duration-select" class="form-control">
+              <option value="15 دقيقة">15 دقيقة</option>
+              <option value="30 دقيقة">30 دقيقة</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">${isAr ? 'الوقت المحدد:' : 'Slot Time:'}</label>
+            <select id="faculty-slot-select" class="form-control">
+              ${f.timeSlots.filter(s => s.available).map(s => `
+                <option value="${s.time}" ${s.time === initialSlotTime ? 'selected' : ''}>${s.time}</option>
+              `).join('')}
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">${isAr ? 'ملاحظات أو روابط إضافية (اختياري):' : 'Notes / Attachments:'}</label>
+          <input type="text" id="faculty-notes-input" class="form-control" placeholder="مثال: استفسار حول دائرة Karnaugh Map وجدول الحقيقة" />
+        </div>
+
+        <!-- Direct Notification Alert Banner -->
+        <div class="direct-alert-banner" style="margin-bottom:1.5rem;">
+          ${createIcon('bell', { size: 16, color: 'var(--fbsu-gold)' })}
+          <div>
+            <strong>${isAr ? 'إشعار فوري تلقائي:' : 'Instant Direct Alert:'}</strong>
+            ${isAr
+              ? ' فور تأكيد الحجز، يُرسل إشعار فوري مباشر إلى مكتب ' + f.name + ' لجدولة موعدك واعتماده رسمياً.'
+              : ' An instant priority alert is pushed directly to faculty calendar.'
+            }
+          </div>
+        </div>
+
+        <button class="btn-primary" id="confirm-faculty-booking-btn" style="width:100%; justify-content:center; padding:0.95rem; font-size:0.95rem;">
+          ${createIcon('checkCircle2', { size: 18, color: '#ffffff' })}
+          <span>${isAr ? 'تأكيد حجز الموعد وإرسال الإشعار الفوري' : 'Confirm & Dispatch Instant Alert'}</span>
+        </button>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('modal-close-x')?.addEventListener('click', closeModal);
+  document.getElementById('faculty-book-backdrop')?.addEventListener('click', (e) => {
+    if (e.target.id === 'faculty-book-backdrop') closeModal();
+  });
+
+  document.getElementById('confirm-faculty-booking-btn')?.addEventListener('click', () => {
+    const topic = document.getElementById('faculty-topic-select')?.value || 'استفسار أكاديمي';
+    const dur = document.getElementById('faculty-duration-select')?.value || '15 دقيقة';
+    const slot = document.getElementById('faculty-slot-select')?.value || '11:15 ص';
+
+    // Dispatch instant notification
+    appState.notifications.unshift({
+      id: 'notif-' + Date.now(),
+      target: f.id,
+      targetName: f.name,
+      sender: `${currentUser.name} (${currentUser.id})`,
+      title: `طلب حجز موعد ساعة مكتبية - ${topic.substring(0, 32)}...`,
+      message: `قام الطالب ${currentUser.name} بحجز موعد لمدة ${dur} في الساعات المكتبية (${slot}) لمناقشة: "${topic}".`,
+      time: 'الآن',
+      read: false,
+      icon: 'userCheck',
+      badge: 'إشعار مباشر'
+    });
+
+    soundFX.playGateOpen();
+    confetti({ particleCount: 90, spread: 60, origin: { y: 0.5 } });
+
+    closeModal();
+    renderApp();
+    showToast('تم إرسال الإشعار وتأكيد الموعد', `تم إرسال إشعار فوري لمكتب ${f.name} بموعدك (${slot}) لمناقشة "${topic}".`, 'bell');
+  });
+}
+
+// ============================================================================
+// Book Study Room / Lab Modal
+// ============================================================================
+function openBookRoomModal(roomId = 'ROOM-A04') {
+  soundFX.playClick();
+  const room = appState.studyRooms.find(r => r.id === roomId) || appState.studyRooms[1];
+  const isAr = appState.currentLang === 'ar';
+  const modal = document.getElementById('modal-container');
+  if (!modal) return;
+
+  modal.innerHTML = `
+    <div class="modal-overlay open" id="room-book-backdrop">
+      <div class="modal-content-box" style="max-width:540px;">
+        <button class="modal-close-btn" id="modal-close-x">
+          ${createIcon('close', { size: 16 })}
+        </button>
+
+        <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1.25rem;">
+          <div style="width:42px; height:42px; border-radius:var(--radius-md); background:var(--fbsu-primary-light); color:var(--fbsu-primary); display:flex; align-items:center; justify-content:center;">
+            ${createIcon('doorClosed', { size: 20, color: 'var(--fbsu-primary)' })}
+          </div>
+          <div>
+            <h3 style="font-size:1.25rem; font-weight:800; color:var(--text-main);">${room.name}</h3>
+            <span style="font-size:0.78rem; color:var(--fbsu-primary);">${room.building} • سعة: ${room.capacity}</span>
+          </div>
+        </div>
+
+        <!-- Purpose selection -->
+        <div class="form-group">
+          <label class="form-label">${isAr ? 'الغرض والنشاط الطلابي:' : 'Teamwork Purpose:'}</label>
+          <select id="room-purpose-select" class="form-control">
+            <option value="أداء Classwork و Assignment جماعي">أداء Classwork و Assignment جماعي</option>
+            <option value="حل Homework وتكليفات أسبوعية">حل Homework وتكليفات أسبوعية</option>
+            <option value="اجتماع فريق مشروع التخرج والبرمجة">اجتماع فريق مشروع التخرج والبرمجة</option>
+            <option value="مذاكرة جماعية لاختبار الميدتيرم">مذاكرة جماعية لاختبار الميدتيرم</option>
+          </select>
+        </div>
+
+        <!-- Team members -->
+        <div class="form-group">
+          <label class="form-label">${isAr ? 'أعضاء المجموعة المشاركين بالعمل:' : 'Team Members:'}</label>
+          <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:0.85rem; display:flex; flex-direction:column; gap:0.5rem; font-size:0.82rem;">
+            <label style="display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
+              <input type="checkbox" checked disabled style="accent-color:var(--fbsu-primary);" />
+              <span>إياد الحربي (أداء Classwork)</span>
+            </label>
+            <label style="display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
+              <input type="checkbox" checked style="accent-color:var(--fbsu-primary);" id="chk-rakan" />
+              <span>راكان المطيري (أداء Assignment)</span>
+            </label>
+            <label style="display:flex; align-items:center; gap:0.5rem; cursor:pointer;">
+              <input type="checkbox" checked style="accent-color:var(--fbsu-primary);" id="chk-abdulaziz" />
+              <span>عبد العزيز البلوي (أداء Homework)</span>
+            </label>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin-bottom:1.25rem;">
+          <div class="form-group">
+            <label class="form-label">${isAr ? 'وقت الدخول:' : 'Start Time:'}</label>
+            <input type="text" id="room-start-time" class="form-control" value="09:00 ص" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">${isAr ? 'موعد الخروج الإلزامي:' : 'Strict Exit Time:'}</label>
+            <input type="text" id="room-end-time" class="form-control" value="09:20 ص (20 دقيقة)" />
+          </div>
+        </div>
+
+        <div class="wallet-routing-notice" style="margin-bottom:1.5rem;">
+          ${createIcon('clock', { size: 16, color: 'var(--fbsu-primary)' })}
+          <span>${isAr ? 'يتم تفعيل عداد تنازلي إلكتروني على شاشة القاعة لضمان إنهاء المهام وإخلاء القاعة في الوقت المحدد.' : 'Enforces strict countdown timer to respect slot allocation.'}</span>
+        </div>
+
+        <button class="btn-primary" id="confirm-room-booking-btn" style="width:100%; justify-content:center; padding:0.95rem; font-size:0.95rem;">
+          ${createIcon('calendar', { size: 18, color: '#ffffff' })}
+          <span>${isAr ? 'تأكيد حجز القاعة وتفعيل العداد التنازلي' : 'Confirm Reservation & Start Timer'}</span>
+        </button>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('modal-close-x')?.addEventListener('click', closeModal);
+  document.getElementById('room-book-backdrop')?.addEventListener('click', (e) => {
+    if (e.target.id === 'room-book-backdrop') closeModal();
+  });
+
+  document.getElementById('confirm-room-booking-btn')?.addEventListener('click', () => {
+    const purpose = document.getElementById('room-purpose-select')?.value || 'عمل جماعي';
+    const targetRoom = appState.studyRooms.find(r => r.id === room.id);
+    if (targetRoom) {
+      targetRoom.status = 'in-use';
+      targetRoom.activeBooking = {
+        teamLead: 'إياد الحربي',
+        teamMembers: ['إياد الحربي', 'راكان المطيري', 'عبد العزيز البلوي'],
+        purpose: purpose,
+        startTime: '09:00 ص',
+        endTime: '09:20 ص',
+        totalMinutes: 20,
+        remainingMinutes: 20
+      };
+    }
+
+    soundFX.playSuccess();
+    confetti({ particleCount: 80, spread: 50, origin: { y: 0.5 } });
+
+    closeModal();
+    renderApp();
+    showToast('تم حجز القاعة بنجاح', `تم حجز ${room.name} حتى الساعة 09:20 ص وبدأ العداد التنازلي.`, 'doorClosed');
   });
 }
 
@@ -2029,6 +3652,7 @@ function closeModal() {
   const modal = document.getElementById('modal-container');
   if (modal) modal.innerHTML = '';
 }
+
 
 // ============================================================================
 // Interactive Listeners
@@ -2048,6 +3672,27 @@ function attachEventListeners() {
   document.getElementById('hero-explore-map-btn')?.addEventListener('click', () => {
     soundFX.playClick();
     appState.activeTab = 'map';
+    renderApp();
+    window.scrollTo({ top: 400, behavior: 'smooth' });
+  });
+
+  document.getElementById('hero-quick-tutoring-btn')?.addEventListener('click', () => {
+    soundFX.playClick();
+    appState.activeTab = 'tutoring';
+    renderApp();
+    window.scrollTo({ top: 400, behavior: 'smooth' });
+  });
+
+  document.getElementById('hero-quick-office-btn')?.addEventListener('click', () => {
+    soundFX.playClick();
+    appState.activeTab = 'office-hours';
+    renderApp();
+    window.scrollTo({ top: 400, behavior: 'smooth' });
+  });
+
+  document.getElementById('hero-quick-rooms-btn')?.addEventListener('click', () => {
+    soundFX.playClick();
+    appState.activeTab = 'rooms';
     renderApp();
     window.scrollTo({ top: 400, behavior: 'smooth' });
   });
@@ -2072,6 +3717,76 @@ function attachEventListeners() {
   });
 
   document.getElementById('open-wallet-btn')?.addEventListener('click', openWalletModal);
+  document.getElementById('open-notifications-btn')?.addEventListener('click', openNotificationsModal);
+  document.getElementById('quick-pay-tuition-btn')?.addEventListener('click', openTuitionPaymentModal);
+  document.getElementById('open-create-session-btn')?.addEventListener('click', openCreateTutoringModal);
+
+  // Tutoring Filter Buttons
+  document.querySelectorAll('.hub-filter-btn[data-tutor-filter]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      soundFX.playClick();
+      appState.tutoringFilter = e.currentTarget.getAttribute('data-tutor-filter');
+      renderApp();
+    });
+  });
+
+  // Book Tutoring Buttons
+  document.querySelectorAll('.book-tutoring-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const sessionId = e.currentTarget.getAttribute('data-session-id');
+      openBookTutoringModal(sessionId);
+    });
+  });
+
+  // Office Hours Booking Buttons
+  document.querySelectorAll('.open-faculty-booking-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const fid = e.currentTarget.getAttribute('data-faculty-id');
+      openBookOfficeHoursModal(fid);
+    });
+  });
+
+  document.querySelectorAll('.time-slot-btn:not(.disabled)').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const fid = e.currentTarget.getAttribute('data-faculty-id');
+      const slot = e.currentTarget.getAttribute('data-slot-time');
+      openBookOfficeHoursModal(fid, slot);
+    });
+  });
+
+  // Study Rooms Buttons
+  document.getElementById('open-book-room-btn')?.addEventListener('click', () => {
+    openBookRoomModal('ROOM-A04');
+  });
+
+  document.querySelectorAll('.book-room-now-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const roomId = e.currentTarget.getAttribute('data-room-id');
+      openBookRoomModal(roomId);
+    });
+  });
+
+  document.querySelectorAll('.extend-lab-time-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      appState.activeRoomCountdown += 10;
+      soundFX.playClick();
+      showToast('تم تمديد وقت المعمل', 'تمت إضافة 10 دقائق لجلسة العمل الجماعي بمعمل الحاسب 102.', 'clock');
+      renderApp();
+    });
+  });
+
+  document.querySelectorAll('.release-lab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lab = appState.studyRooms.find(r => r.id === 'LAB-102');
+      if (lab) {
+        lab.status = 'available';
+        lab.activeBooking = null;
+      }
+      soundFX.playSuccess();
+      showToast('تم إخلاء المعمل', 'تم إنهاء الجلسة وتسليم معمل الحاسب 102 بنجاح.', 'checkCircle2');
+      renderApp();
+    });
+  });
 
   document.getElementById('sound-toggle-btn')?.addEventListener('click', () => {
     soundFX.enabled = !soundFX.enabled;
