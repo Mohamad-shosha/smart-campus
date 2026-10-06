@@ -198,13 +198,13 @@ def get_sections_16_to_18():
           </div>
           <div class="figma-frame-body-dark" style="padding:22px;">
             <div class="responsive-split-2col">
-              <!-- Dr. Raghad Al-Rifaei -->
+              <!-- Dr. Raghad Al-Nefaie -->
               <div style="background:rgba(12,28,25,0.85); border:1.5px solid var(--fbsu-teal); border-radius:12px; padding:16px;">
                 <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
                   <div style="display:flex; gap:12px; align-items:center;">
-                    <div style="width:42px; height:42px; border-radius:10px; background:linear-gradient(135deg, #116E63, #0b4941); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; font-size:14px;">ر.ع</div>
+                    <div style="width:42px; height:42px; border-radius:10px; background:linear-gradient(135deg, #116E63, #0b4941); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; font-size:14px;">ر.ن</div>
                     <div>
-                      <div style="font-weight:800; font-size:13.5px; color:#fff;">د. رغد الرفيعي</div>
+                      <div style="font-weight:800; font-size:13.5px; color:#fff;">د. رغد النفيعي</div>
                       <div style="font-size:11px; color:#38c2b0;">رئيسة قسم كلية الحاسبات وتقنية المعلومات</div>
                     </div>
                   </div>
@@ -265,7 +265,7 @@ def get_sections_16_to_18():
           <div class="figma-frame-body-light" style="padding:22px; background:#f8fafc;">
             <div class="responsive-split-2col">
               <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:12px; padding:16px;">
-                <div style="font-weight:800; font-size:13px; color:#0f172a; margin-bottom:4px;">د. رغد الرفيعي • رئيسة قسم الحاسب</div>
+                <div style="font-weight:800; font-size:13px; color:#0f172a; margin-bottom:4px;">د. رغد النفيعي • رئيسة قسم الحاسب</div>
                 <div style="font-size:11px; color:#64748b; margin-bottom:10px;">إشعار فوري: يتم إرسال تنبيه مباشر إلى هاتف ولوحة تحكم الدكتورة بمجرد حجز الموعد.</div>
                 <button class="btn btn-teal-primary" style="width:100%; font-size:11px;">طلب موعد لمناقشة Logic Design</button>
               </div>

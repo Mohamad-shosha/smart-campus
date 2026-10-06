@@ -1257,14 +1257,10 @@ def assemble_master_showcase():
       <div class="figma-file-title">
         <span>FBSU-Smart-Parking.fig</span>
         <span class="figma-version-pill">v3.0 Ultra-Responsive</span>
-        <a href="./app.html" class="figma-version-pill" style="background:linear-gradient(135deg, rgba(17,110,99,0.5), rgba(215,162,55,0.4)); border-color:#d7a237; color:#ffd166; text-decoration:none; display:inline-flex; align-items:center; gap:5px; font-weight:800; padding:3px 9px;" title="فتح الموقع التفاعلي الحي">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ffd166" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          <span>الموقع التفاعلي المباشر</span>
-        </a>
       </div>
     </div>
 
-    <!-- Quick Frame Jump Navigation for ALL 15 Sections -->
+    <!-- Quick Frame Jump Navigation for ALL 18 Sections -->
     <nav class="figma-nav-links">
       <a href="#f-header" class="figma-nav-btn active">01. الترويسة</a>
       <a href="#f-hero" class="figma-nav-btn">02. الواجهة والعدادات</a>
@@ -1287,10 +1283,6 @@ def assemble_master_showcase():
     </nav>
 
     <div class="figma-top-right">
-      <a href="./app.html" class="btn-toggle-inspect" style="background:linear-gradient(135deg, #116E63, #0b4941); border-color:#d7a237; color:#ffffff; font-weight:800; text-decoration:none;" title="تشغيل الموقع التفاعلي الكامل">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffd166" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        <span>تجربة الموقع الحي</span>
-      </a>
       <button id="toggleInspectBtn" class="btn-toggle-inspect active">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
         <span>Inspect Mode</span>
@@ -1313,20 +1305,14 @@ def assemble_master_showcase():
         <p>
           توثيق بصري وهندسي شامل ومُفصّل لكافة أجزاء المنظومة دون استثناء أي مكون أو حالة. تم تجسيد كل قسم كإطارين متكاملين (Artboards) للوضع الليلي الفاخر (Dark Mode) والوضع النهاري المؤسسي المعتمد (Light Mode)، بتوافق تام مع شاشات الجوال والحواسب.
         </p>
-        <div style="margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap;">
-          <a href="./app.html" style="display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg, #116E63 0%, #0b4941 100%); border:1.5px solid #d7a237; color:#ffffff; padding:9px 18px; border-radius:10px; font-size:13px; font-weight:800; text-decoration:none; box-shadow:0 6px 20px rgba(17,110,99,0.5);">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffd166" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            <span>🚀 فتح الموقع التفاعلي المباشر (Live Interactive Web App)</span>
-          </a>
-        </div>
       </div>
       <div class="figma-hero-stats">
         <div class="hero-stat-box">
-          <div class="hero-stat-number">15</div>
+          <div class="hero-stat-number">18</div>
           <div class="hero-stat-label">Full Sections</div>
         </div>
         <div class="hero-stat-box">
-          <div class="hero-stat-number">30</div>
+          <div class="hero-stat-number">36</div>
           <div class="hero-stat-label">Dual Frames</div>
         </div>
         <div class="hero-stat-box">

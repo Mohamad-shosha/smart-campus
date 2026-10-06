@@ -193,14 +193,14 @@ const USERS = {
   },
   drRaghad: {
     id: 'FAC-8821',
-    name: 'د. رغد الرفيعي',
-    nameEn: 'Dr. Raghad Al-Rifaei',
+    name: 'د. رغد النفيعي',
+    nameEn: 'Dr. Raghad Al-Nefaie',
     role: 'رئيسة قسم كلية الحاسبات وتكنولوجيا المعلومات',
     roleEn: 'Chairperson - Department of Computer Science',
     college: 'كلية الحاسب الآلي',
     department: 'قسم علوم وهندسة الحاسب',
     office: 'مبنى كلية الحاسب - مكتب C-105',
-    email: 'r.alrifaei@fbsu.edu.sa',
+    email: 'r.alnefaie@fbsu.edu.sa',
     car: 'بي إم دبليو X5',
     carEn: 'BMW X5',
     plateLetters: 'ر غ د',
@@ -354,13 +354,13 @@ const INITIAL_TUTORING_SESSIONS = [
 const FACULTY_MEMBERS = [
   {
     id: 'drRaghad',
-    name: 'د. رغد الرفيعي',
-    nameEn: 'Dr. Raghad Al-Rifaei',
+    name: 'د. رغد النفيعي',
+    nameEn: 'Dr. Raghad Al-Nefaie',
     rank: 'رئيسة قسم كلية الحاسبات وتكنولوجيا المعلومات',
     rankEn: 'Chairperson - Computer Science & Engineering Dept',
     college: 'كلية الحاسب الآلي',
     office: 'مكتب رئيسة القسم - مبنى الحاسب C-105',
-    email: 'r.alrifaei@fbsu.edu.sa',
+    email: 'r.alnefaie@fbsu.edu.sa',
     badge: 'رئيسة القسم',
     avatarColor: '#116E63',
     daysText: 'الأحد والثلاثاء (10:00 ص - 12:30 م)',
@@ -526,7 +526,7 @@ const INITIAL_NOTIFICATIONS = [
   {
     id: 'notif-1',
     target: 'drRaghad',
-    targetName: 'د. رغد الرفيعي (رئيسة القسم)',
+    targetName: 'د. رغد النفيعي (رئيسة القسم)',
     sender: 'إياد الحربي (20210045)',
     title: 'طلب حجز ساعة مكتبية - مناقشة مادة Logic Design',
     message: 'قام الطالب إياد الحربي بحجز موعد لمدة 15 دقيقة (الأحد 11:15 ص) لمناقشة استفسار في مشروع مادة Logic Design.',
@@ -1001,7 +1001,7 @@ function renderApp() {
                   ${createIcon('userCheck', { size: 14 })}
                   <div class="dropdown-item-info">
                     <span class="dropdown-item-title">${isAr ? 'الساعات المكتبية للعمداء والرؤساء' : 'Faculty Office Hours'}</span>
-                    <span class="dropdown-item-desc">${isAr ? 'د. رغد الرفيعي ود. محمد مزهر' : 'Dr. Raghad & Dr. Mezher'}</span>
+                    <span class="dropdown-item-desc">${isAr ? 'د. رغد النفيعي ود. محمد مزهر' : 'Dr. Raghad & Dr. Mezher'}</span>
                   </div>
                 </button>
                 <button class="dropdown-item ${appState.activeTab === 'rooms' ? 'active' : ''}" data-tab="rooms">
@@ -2102,8 +2102,8 @@ function renderOfficeHoursTab(isAr) {
       <h3 class="section-title">${isAr ? 'حجز الساعات المكتبية للعمداء ورؤساء الأقسام' : 'FBSU Academic Leadership & Faculty Office Hours'}</h3>
       <p class="section-subtitle">
         ${isAr
-          ? 'احجز موعداً مباشراً في الساعات المكتبية لرئيسة قسم كلية الحاسبات (د. رغد الرفيعي) أو عميد كلية الحاسب (د. محمد مزهر) لمناقشة مشروع التخرج أو استفسار مادة Logic Design. يرسل النظام إشعاراً فورياً للعميد أو رئيسة القسم بالموعد وتفاصيل الطالب!'
-          : 'Book an office hour slot with Chairperson Dr. Raghad Al-Rifaei or Dean Dr. Mohammad Mezher for project reviews or Logic Design questions with instant notifications!'
+          ? 'احجز موعداً مباشراً في الساعات المكتبية لرئيسة قسم كلية الحاسبات (د. رغد النفيعي) أو عميد كلية الحاسب (د. محمد مزهر) لمناقشة مشروع التخرج أو استفسار مادة Logic Design. يرسل النظام إشعاراً فورياً للعميد أو رئيسة القسم بالموعد وتفاصيل الطالب!'
+          : 'Book an office hour slot with Chairperson Dr. Raghad Al-Nefaie or Dean Dr. Mohammad Mezher for project reviews or Logic Design questions with instant notifications!'
         }
       </p>
     </div>
@@ -2114,7 +2114,7 @@ function renderOfficeHoursTab(isAr) {
       <div>
         <strong>${isAr ? 'إشعار فوري مباشر:' : 'Instant Direct Notification:'}</strong>
         ${isAr
-          ? ' فور تأكيد حجزك، يرسل النظام تنبيهاً مباشراً مع بيانات الطالب والموضوع إلى لوحة رئيسة القسم د. رغد الرفيعي أو العميد د. محمد مزهر.'
+          ? ' فور تأكيد حجزك، يرسل النظام تنبيهاً مباشراً مع بيانات الطالب والموضوع إلى لوحة رئيسة القسم د. رغد النفيعي أو العميد د. محمد مزهر.'
           : ' Instant alert is dispatched to the Dean or Dept Chair dashboard upon booking confirmation.'
         }
       </div>
@@ -2536,7 +2536,7 @@ function openAuthModal(initialTab = 'login') {
             </div>
             <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.4rem;">
               <button class="zone-btn" style="text-align:center; padding:0.35rem 0.4rem; font-size:0.72rem;" id="quick-login-raghad">
-                د. رغد الرفيعي
+                د. رغد النفيعي
               </button>
               <button class="zone-btn" style="text-align:center; padding:0.35rem 0.4rem; font-size:0.72rem;" id="quick-login-mezher">
                 د. محمد مزهر

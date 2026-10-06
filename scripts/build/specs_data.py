@@ -584,14 +584,14 @@ SECTIONS_SPECS = {
         "num": "17",
         "title": "حجز الساعات المكتبية للعمداء ورؤساء الأقسام (Faculty Office Hours & Instant Alerts)",
         "badge": "Academic Leadership Hub",
-        "chips": ["Dr. Raghad Al-Rifaei", "Dr. Mohammad Mezher", "Logic Design", "Instant Push Alerts"],
+        "chips": ["Dr. Raghad Al-Nefaie", "Dr. Mohammad Mezher", "Logic Design", "Instant Push Alerts"],
         "colors": [
-            ("لون رئاسة القسم (Teal Emerald)", "#116E63", "#116E63", "رمز قسم علوم وهندسة الحاسب - د. رغد الرفيعي"),
+            ("لون رئاسة القسم (Teal Emerald)", "#116E63", "#116E63", "رمز قسم علوم وهندسة الحاسب - د. رغد النفيعي"),
             ("لون عمادة الكلية (Academic Gold)", "#D7A237", "#D7A237", "رمز عمادة كلية الحاسوب - د. محمد مزهر"),
             ("لون الإشعار اللحظي (Notification Amber)", "#F59E0B", "#F59E0B", "تنبيه فوري يظهر للدكتور فور تأكيد الحجز")
         ],
         "typography": [
-            ("خط أسماء القيادات الأكاديمية", "Tajawal (800 Bold)", "13.5px / 1.3", "د. رغد الرفيعي ود. محمد مزهر"),
+            ("خط أسماء القيادات الأكاديمية", "Tajawal (800 Bold)", "13.5px / 1.3", "د. رغد النفيعي ود. محمد مزهر"),
             ("خط الرتبة والمسمى الأكاديمي", "Alexandria (600)", "11px / 1.4", "رئيسة قسم علوم وهندسة الحاسب / عميد كلية الحاسوب"),
             ("خط مواعيد الفترات (Time Slots)", "JetBrains Mono (700)", "10.5px / Monospace", "حجز 15 دقيقة أو 30 دقيقة لمناقشة المشاريع ومقرر Logic Design")
         ],
